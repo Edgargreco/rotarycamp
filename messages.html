@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - Rotary Fellowship of Camping</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4f8c;
+            --primary-dark: #0d3a6b;
+            --primary-light: #2d6bb5;
+            --secondary: #e31b23;
+            --accent: #f9a825;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --medium-gray: #6c757d;
+            --dark-gray: #343a40;
+            --black: #212529;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
+            --shadow-primary: 0 4px 12px rgba(26, 79, 140, 0.3);
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 20px;
+            --radius-round: 50%;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --font-primary: 'Open Sans', sans-serif;
+            --h1: 2.5rem;
+            --h2: 2rem;
+            --h3: 1.75rem;
+            --h4: 1.5rem;
+            --h5: 1.25rem;
+            --h6: 1rem;
+            --base-font-size: 1rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            font-size: var(--base-font-size);
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            z-index: 10000;
+            transition: all var(--transition-medium);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-sm) 0;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: all var(--transition-medium);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            width: 50px;
+            height: 50px;
+            position: relative;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0;
+            transition: all var(--transition-medium);
+        }
+
+        .mobile-menu-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .mobile-menu-toggle .bar {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: var(--primary);
+            margin: 6px auto;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-radius: 2px;
+            position: relative;
+            left: 0;
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background-color: var(--secondary);
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background-color: var(--secondary);
+        }
+
+        .mobile-menu-toggle.active {
+            transform: rotate(90deg);
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin-right: var(--space-md);
+        }
+
+        .nav-list li {
+            position: relative;
+            margin-left: var(--space-md);
+        }
+
+        .nav-list a {
+            color: var(--dark-gray);
+            font-weight: 500;
+            padding: var(--space-xs) 0;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .nav-list a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width var(--transition-medium);
+        }
+
+        .nav-list a:hover:after,
+        .nav-list a.active:after {
+            width: 100%;
+        }
+
+        .nav-list a.active {
+            color: var(--primary);
+        }
+
+        .nav-cta .button {
+            padding: var(--space-xs) var(--space-md);
+            background-color: var(--secondary);
+            color: var(--white);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-medium);
+        }
+
+        .nav-cta .button:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1000px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .main-nav {
+                position: fixed;
+                display: none;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transform: translateX(100%);
+                transition: transform var(--transition-medium);
+                z-index: 1000;
+                padding: var(--space-xl);
+            }
+
+            .main-nav.active {
+                display: flex;
+                transform: translateX(0);
+            }
+
+            .nav-list {
+                flex-direction: column;
+                margin-right: 0;
+                margin-bottom: var(--space-lg);
+                text-align: center;
+            }
+
+            .nav-list li {
+                margin: var(--space-sm) 0;
+            }
+
+            .nav-list a {
+                font-size: var(--h5);
+            }
+        }
+
+        /* Page Loader */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid var(--white);
+            border-right: 4px solid var(--white);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader-text {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .loader-text span {
+            animation: fadeInOut 1.5s ease-in-out infinite;
+        }
+
+        .loader-text span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loader-text span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Hero Banner */
+        .mini-top-banner {
+            margin-top: 80px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .mini-top-banner img.banner-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            opacity: 100%;
+            transition: transform 0.05s ease-out;
+        }
+
+        .mini-top-banner .mtb-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 74, 135, 0.4), rgba(0, 74, 135, 0.6));
+            z-index: 2;
+            pointer-events: none;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mtb-hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+            z-index: 3;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s var(--transition-slow) forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .mtb-hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+            color: white;
+        }
+
+        .mtb-hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 0;
+            opacity: 0.9;
+        }
+
+        /* Messages Section */
+        .messages-section {
+            padding: 4rem var(--space-md);
+            background-color: var(--off-white);
+        }
+
+        .section-title {
+            font-size: var(--h2);
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .messages-container {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .message-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-medium);
+            display: grid;
+            grid-template-columns: 280px 1fr;
+        }
+
+        .message-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .message-image {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            background-color: var(--light-gray);
+        }
+
+        .message-content {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message-header {
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .message-position {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .message-name {
+            font-size: var(--h4);
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .message-role {
+            font-size: 0.95rem;
+            color: var(--medium-gray);
+            font-style: italic;
+        }
+
+        .message-text {
+            color: var(--dark-gray);
+            line-height: 1.8;
+            flex: 1;
+            text-align: justify;
+            font-size: 0.95rem;
+            max-height: 250px;
+            overflow: hidden;
+            transition: max-height var(--transition-medium);
+            position: relative;
+        }
+
+        .message-text p {
+            margin-bottom: 1rem;
+        }
+
+        .message-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .message-text.expanded {
+            max-height: none;
+        }
+
+        .message-text::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, rgba(248, 249, 250, 1));
+            pointer-events: none;
+            transition: opacity var(--transition-medium);
+        }
+
+        .message-text.expanded::after {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .expand-button {
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: fit-content;
+        }
+
+        .expand-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .expand-button i {
+            transition: transform var(--transition-fast);
+        }
+
+        .expand-button.expanded i {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 3rem var(--space-md) 1rem;
+            margin-top: 0;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            font-size: var(--h4);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-about {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .links-title {
+            font-size: var(--h5);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .links-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-link {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.9;
+            transition: all var(--transition-fast);
+            padding: 0.25rem 0;
+        }
+
+        .footer-link:hover,
+        .footer-link.active {
+            opacity: 1;
+            padding-left: 0.5rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1.5rem;
+            text-align: center;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .copyright {
+            margin-bottom: 0.5rem;
+        }
+
+        .designer {
+            margin-bottom: 0;
+        }
+
+        .designer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .designer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-medium);
+            z-index: 999;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .message-card {
+                grid-template-columns: 1fr;
+            }
+
+            .message-image {
+                height: 250px;
+            }
+
+            .message-content {
+                padding: 1.5rem;
+            }
+
+            .message-name {
+                font-size: var(--h5);
+            }
+
+            .mtb-hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .mtb-hero-content p {
+                font-size: 1rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <div class="loader-text">
+                <span>L</span><span>o</span><span>a</span><span>d</span><span>i</span><span>n</span><span>g</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html" aria-label="Rotary Fellowship of Camping">
+                        <img src="logo.png" alt="Rotary Fellowship of Camping Logo">
+                    </a>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="messages.html" class="active">Messages</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+
+                    <div class="nav-cta">
+                        <a href="donate.html" class="button">Donate Now</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="mini-top-banner">
+        <img class="banner-bg" src="ban.jpg" alt="Banner Background">
+        <div class="mtb-hero-content">
+            <h1>Messages from Leadership</h1>
+            <p>Inspiring words from the hearts and minds of our fellowship leaders</p>
+        </div>
+        <div class="mtb-overlay"></div>
+    </section>
+
+    <!-- Messages Section -->
+    <section class="messages-section">
+        <div class="container">
+            <div class="messages-container">
+                <!-- Chairperson Message -->
+                <div class="message-card">
+                    <img src="IMG_9825.jpg" alt="Rtn. Irene Nakanwagi" class="message-image">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <div class="message-position">Executive Director</div>
+                            <div class="message-name">Rtn. Irene Nakanwagi</div>
+                            <div class="message-role">Fellowship Executive Director</div>
+                        </div>
+                        <div class="message-text" data-expanded="false">
+                            <p><strong>DEAR Rtns, Rtrs and friends of Rotary</strong></p>
+                            <p>I greet you all and you're most welcome to Kalangala. What started as a thought its now growing into a big bold idea of serving humanity through the Fun of Camping. I would like to thank the Almighty God who gave me this idea and helped me to build it as an inspiration to many of us who camp and support every year. Lord it was by your Grace that i can talk and people hear me.</p>
+                            <p>This journey of using my profession and passion birthed a fellowship that has enabled me to take the lead for Years. It has been quite challenging but has also built a strong and resilient team that is focused on continuity on our targets and Vision to save lives of those suffering with cardiovascular conditions especially children born with congenital heart Diseases.</p>
+                            <p>It's a Noble Cause which has taken many lives of children simply because of not being aware of the condition and its symptoms. I would like to thank all Rtns Rtrs, friends and all sponsors who have supported this journey up to the 6th edition by tirelessly giving in your unwavering support to impact our communities and touching lives of little souls.</p>
+                            <p>Every edition has its own stories of existence and we have achieved through working together as a team. As a fellowship we now have a total number of 220 members subscribing annually and we call upon more to join us also congratulate inducted in the 6th edition.</p>
+                            <p>It's with all your support that this fellowship can achieve its dream of constructing Rotary Heart institute to give more hands to our communities. The different executive committees led by the outgoing patron Peace Taremwa which have worked tirelessly to achieve in every edition thank you so much for the impactful projects well delivered.</p>
+                            <p>Let's not tire, let's focus on the positive, let's show cause for visibility, build networks and ignore the negativity to help us get our dream come true. I wish the incoming Chair Rtn. Jalia Kiganda and the whole committee all the best in service because we believe in you a lot that our plans will be executed and achieved.</p>
+                            <p>I pledge my full continuous support as the Executive Charter Director/ Founder of the fellowship to guide and advice for continuity.</p>
+                            <p><strong>TOGETHER WE STAND TO SAVE MORE LIVES OF THOSE IN NEED</strong></p>
+                        </div>
+                        <button class="expand-button" aria-expanded="false">
+                            <span>Read More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Vice Chairperson Message -->
+                <div class="message-card">
+                    <img src="vice.png" alt="Rtn. Patrick Rujumba" class="message-image">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <div class="message-position">Vice Chairperson</div>
+                            <div class="message-name">Rtn. Patrick Rujumba</div>
+                            <div class="message-role">Vice Chairperson, Fellowship of Camping</div>
+                        </div>
+                        <div class="message-text" data-expanded="false">
+                            <p>The Rotary Fellowship of Camping is one of the greatest fellowships that directly saves lives, founded on the belief that children are a precious gift from God whose lives must be preserved. Acknowledging that many children born with congenital heart diseases die due to lack of early detection and treatment compelled us into action.</p>
+                            <p>We leave the comfort of our homes to camp in the wilderness in order to raise funds to procure machines for early heart–fault detection and to support the costs of open–heart surgeries for children, especially those from vulnerable families. We endure nights with mosquitoes and other insects, and we brave the hot sunshine and rainfall, all in the pursuit of saving lives.</p>
+                            <p>This fellowship has crossed the borders of districts 9213 and 9214, reaching far beyond. There is no greater expression of true love than seeing a smile on a child's face and tears of joy from parents whose children we have saved. It is a source of pride to restore happiness to families that had lost hope, and within this camping fellowship, the joy of serving others becomes its own reward; like revolutionaries, we sing and dance because the hope we bring is real.</p>
+                            <p>With hearts gifted for service, we carry a deep desire to grow into a global movement and eventually establish a Heart Institute in our region and many more as God guides us. As we head to Kalangala for the 6th Camping Fellowship—with hope of celebrating the 25th, 50th, and 100th in the future—we plant a seed on fertile soil, believing in a tomorrow where no child suffers from treatable or preventable conditions.</p>
+                            <p>Ladies and Gentlemen, we need more hands in this mission, and may the grace of God keep us focused on the prize: a happy and healthy child.</p>
+                        </div>
+                        <button class="expand-button" aria-expanded="false">
+                            <span>Read More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Patron Message -->
+                <div class="message-card">
+                    <img src="patron.png" alt="PDG Anne Nkutu" class="message-image">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <div class="message-position">Patron</div>
+                            <div class="message-name">PDG Anne Nkutu</div>
+                            <div class="message-role">Patron, Rotary Fellowship of Camping</div>
+                        </div>
+                        <div class="message-text" data-expanded="false">
+                            <p><strong>Dear Fellow Campers,</strong></p>
+                            <p>Let me begin by congratulating you for organizing yet another memorable camp in the Sesse Islands; your dedication to creating such engaging outdoor experiences is admirable, and even more inspiring is the noble cause behind these annual camps. Over the last six years, you have built a community not only of adventure lovers but of people with big hearts, and I cannot thank you enough for your continued support toward the treatment of children with congenital disease in Uganda.</p>
+                            <p>I also wish to express my sincere gratitude to the members of the Camping Fellowship for selecting me as your new patron; I am truly honored and excited about the possibilities that lie ahead. Your love for camping reflects a deep desire for adventure, and I look forward to supporting you as we explore new opportunities for the fellowship.</p>
+                            <p>As we celebrate six solid years of the Camping Fellowship, it is prudent to begin envisioning where we hope to be in the next four years, for growth comes through continuous learning and adaptation. As your patron, I hope that we will, among other things, identify new ways of expanding our horizon and growing our membership, develop new partnerships to amplify our impact, leverage social media to increase our visibility and showcase our service activities, and broaden our service portfolio to include environmental conservation—given our deep love for nature.</p>
+                            <p>Although I regret being unable to join you physically, I look forward to the earliest opportunity to discuss these ideas in depth.</p>
+                            <p><strong>Wishing you all a wonderful and exciting time in Sesse.</strong></p>
+                        </div>
+                        <button class="expand-button" aria-expanded="false">
+                            <span>Read More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Angela Ssemukutu Message -->
+                <div class="message-card">
+                    <img src="angela.png" alt="Rtn. Angela Ssemukutu" class="message-image">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <div class="message-position">Camping Rotarian Dean of AGs</div>
+                            <div class="message-name">Rtn. Angela Ssemukutu</div>
+                            <div class="message-role">Camping Rotarian Dean of Action Groups</div>
+                        </div>
+                        <div class="message-text" data-expanded="false">
+                            <p>Rotary Fellowships are international groups that share a common passion, offering members a fun way to make friends around the world, explore hobbies or professions, and enrich their Rotary experience. Membership in these fellowships is open to any interested individual, providing non-Rotarians with a great opportunity to gain insight into what Rotary is and what we do. Currently, the existing and registered fellowships include: Rotarian Bikers of East Africa (Vroomers), a chapter of the International Fellowship of Rotarian Motorcyclists; the Rotary Fellowship for Empowering Women (Rotary Roses); the Rotary Fellowship of Vintage Collectibles; the Rotary Fellowship of Camping; the Comedy and Laughters Rotary Fellowship; the Rotary Mariners of East Africa, a chapter of the International Yachting Fellowship of Rotarians; and Rotary Means Business, a chapter of the Rotary Means Business Fellowship.</p>
+                            <p>The emergence of new fellowships in Districts 9213 and 9214 has elevated Rotary by creating opportunities to enjoy shared passions with like-minded people, while strengthening friendships and connections across the globe. These fellowships also undertake impactful projects that improve lives, including the "Wear Your Jacket" Campaign (Mariners), the Cardiovascular Campaign (Campers), the Road Safety Campaign (Vroomers), the Luzira Women's Prison Refurbishment Campaign (Laughters and Comedy), among many others.</p>
+                            <p>More fellowships of interest to our members can be found at www.rotary.org/fellowships, where extensive activities aligned with various professions, businesses, or industries are listed—and if one's area is not represented, there is always the opportunity to start a new fellowship. Rotary Fellowships contribute significantly to advancing world understanding and peace. Interested Rotarians can join a fellowship through the Rotary Fellowships Handbook or even initiate a prospective fellowship if their recreational or vocational interest is not listed.</p>
+                            <p>Fellowships are expected to facilitate communication among members and maintain regular engagement with Rotary International. Together with Rotarian Action Groups—comprising professional Rotarians serving in Rotary's six areas of focus—fellowships are an effective tool for promoting membership development and should be actively embraced across our districts. As you discover a fellowship that fits your passion, find joy in doing what you love most—it might even be a Kimeeza Fellowship, since great ideas often spring from such gatherings.</p>
+                            <p>I congratulate the Campers on this remarkable milestone and the achievements earned so far; continue uplifting the lives of the less privileged, even as you enjoy the fun. Happy Camping Celebrations.</p>
+                        </div>
+                        <button class="expand-button" aria-expanded="false">
+                            <span>Read More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Rtn. Ghristine Kyeyune Kawooya Message -->
+                <div class="message-card">
+                    <img src="ghristine.png" alt="Rtn. Ghristine Kyeyune Kawooya" class="message-image">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <div class="message-position">District Governor 9214</div>
+                            <div class="message-name">Rtn. Ghristine Kyeyune Kawooya</div>
+                            <div class="message-role">District Governor 9214 (Uganda - Tanzania) 2025-2026</div>
+                        </div>
+                        <div class="message-text" data-expanded="false">
+                            <p>With a noble vision to establish the Rotary Heart Institute—a beacon of hope for underprivileged children born with congenital heart diseases—the Camping Fellowship was humbly born during the challenging times of the COVID-19 pandemic. Since then, six impactful editions have taken place, each driven by a shared mission to transform young lives. This remarkable journey is a testament to Rotary's enduring values of integrity, service, fellowship, diversity, and leadership, and it also serves as a powerful reminder that being a Rotarian often means going beyond the call of duty.</p>
+                            <p>In such moments, the strength of belonging to like-minded, purpose-driven groups such as this Fellowship truly shines. The impact made by the Camping Rotarians over the past five years speaks volumes, demonstrating how unity, vision, and partnership can truly transform society, and I am deeply honored to associate with this Fellowship and sincerely thank you for inviting me to join the 6th edition today.</p>
+                            <p>Your goal of donating seven ECG machines to the regional referral hospitals in Gulu, Soroti, Arua, Kabale, Mbale, and Hoima, along with screening fifty children for heart surgery, is not only ambitious but also a timely and life-saving intervention; with the rising number of children born with heart-related complications, your work could not be more essential. This initiative aligns beautifully with Rotary's key areas of focus—disease prevention and treatment, and maternal and child health—and I thank you for uniting to protect and nurture the most vulnerable children.</p>
+                            <p>With a noble vision to establish the Rotary Heart Institute, a beacon of hope for underprivileged children born with congenital heart diseases, the Camping Fellowship was humbly born during the challenging times of the COVID-19 pandemic, and since then, six impactful editions have taken place, each driven by a shared mission to transform young lives. This remarkable journey is a testament to Rotary's enduring values of integrity, service, fellowship, diversity, and leadership, and a powerful reminder that being a Rotarian often means going beyond the call of duty; in such moments, the strength of belonging to like-minded, purpose-driven groups such as this Fellowship truly shines.</p>
+                            <p>As Herbert Hoover once said, "Children are our most valuable resource," and indeed, we must protect them, for we are nurturing tomorrow's generation together one act at a time.</p>
+                        </div>
+                        <button class="expand-button" aria-expanded="false">
+                            <span>Read More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Rtn. Geoffrey Martin Kitakule Message -->
+                <div class="message-card">
+                    <img src="geoffrey.png" alt="Rtn. Geoffrey Martin Kitakule" class="message-image">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <div class="message-position">District Governor 9213</div>
+                            <div class="message-name">Rtn. Geoffrey Martin Kitakule</div>
+                            <div class="message-role">District Governor 9213 (Uganda) 2025-2026</div>
+                        </div>
+                        <div class="message-text" data-expanded="false">
+                            <p>Camping is something close to my heart, but more importantly, camping under the Camping Fellowship has become a powerful tool for raising funds and awareness for Rotary causes—and that is why it matters now more than ever. At first glance, camping may seem like a simple escape: pitching tents, gathering around a fire, and sharing stories under the stars. In reality, it is much more, for camping builds community, strengthens resilience, and fosters a deep appreciation for nature and human connection—qualities that mirror Rotary's core values of service, fellowship, and leadership.</p>
+                            <p>Now imagine combining that spirit with purpose: camping for a cause, organizing trips not just for leisure but to support humanitarian projects such as clean water initiatives, education for underprivileged children, polio eradication, or, in this case, raising funds for cardiovascular and heart-related projects in Districts 9213 and 9214. This is when camping becomes a movement. Instead of simply asking for donations, the Camping Fellowship creates meaningful experiences—nature walks, eco challenges, storytelling sessions, survival workshops—all tied to a cause.</p>
+                            <p>People are more willing to give when they feel engaged and part of something purposeful, and I thank this fellowship for its creativity. The world needs Rotary now more than ever; from clean water to literacy, from health to peace-building, our causes remain vital. To fund them, we must think creatively, engage communities, and inspire joy while doing good. So let us continue to camp with purpose, gathering around fires not just for warmth but for change, sleeping under the stars with hope in our hearts and service in our minds.</p>
+                            <p>Every tent pitched, every laugh shared, and every dollar raised on these campgrounds sparks a lifeline for a child whose heart condition can be treated through access to modern medical equipment. The Camping Fellowship is a shining example of how uniting for good yields impactful results and strengthens our commitment to caring for our communities. Therefore, let us keep serving, growing, and camping—for a cause.</p>
+                            <p>Indeed, Rotary Eyamba! #RotaryEyamba</p>
+                        </div>
+                        <button class="expand-button" aria-expanded="false">
+                            <span>Read More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Rtn. Peter Dhamuzungu Message -->
+                <div class="message-card">
+                    <img src="PeterChairCor.png" alt="Rtn. Peter Dhamuzungu" class="message-image">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <div class="message-position">Fundraising Chair</div>
+                            <div class="message-name">Rtn. Peter Dhamuzungu</div>
+                            <div class="message-role">Fundraising Chair, Rotary Camping Fellowship</div>
+                        </div>
+                        <div class="message-text" data-expanded="false">
+                            <p>"A child born with a heart defect is not asking for much—just a chance to live, to grow, and to be loved—and that chance begins with someone who chooses to care." When we first began this initiative within the Rotary Camping Fellowship, we could never have imagined how deeply it would touch lives; what started as a simple act of goodwill has grown into a powerful force for hope.</p>
+                            <p>Together, we have helped children who once faced futures filled with uncertainty and loss; together, we have saved lives. Every heartbeat we have helped restore carries a story of compassion, and each child who now lives and thrives stands as a testimony to what humanity can achieve when it rises in unity and love.</p>
+                            <p>Yet the need continues: every day, children are born with congenital heart diseases, their tiny bodies struggling from the very beginning while their families are emotionally and financially devastated, praying not for luxury but for their child's life. This Rotary year, we are raising 200 million Ugandan Shillings to fund life-saving heart surgeries for children who cannot afford them—this is not just a goal but a call, a cry from every child waiting for someone to care, and every shilling raised becomes a step toward survival, every contribution a lifeline.</p>
+                            <p>Now more than ever, we must extend our reach by speaking to our families, friends, and colleagues, inviting them into this mission so that the more voices we gather, the louder our call becomes, and the more hands we join, the more hearts we heal. As you return to your homes, carry this mission with you; let it live in your thoughts and move in your actions, for somewhere a child is waiting and somewhere a mother is praying, and though you may never meet them, your generosity will give them a future.</p>
+                            <p>I believe with all my heart that no act of compassion is ever wasted—God sees every effort, remembers every kind gesture, and blesses those who give from a place of love. To everyone who has already stood with us, thank you for being part of this fellowship of healing and for proving that love still exists in this world; let us press on, let us be the reason a child wakes up tomorrow with hope in their heart, and let us be remembered not for what we owned, but for what we gave.</p>
+                        </div>
+                        <button class="expand-button" aria-expanded="false">
+                            <span>Read More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">Rotary Fellowship of Camping</a>
+                <p class="footer-about">
+                    Rotary Fellowship of Camping is a group of friends, Rotarians and family that share a common passion of Camping and fun. It is built on a promise of making new friends, bonding and network through fun around the world but most importantly explore a hobby of Camping while serving the communities around the world.
+                </p>
+
+                <div class="footer-social">
+                    <a href="https://www.tiktok.com/@rotary.camping.ug?_t=ZM-90xGYxHomuS&_r=1" class="social-link" aria-label="tiktok" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.instagram.com/rotary_camping_ug?igsh=MXNtMnFkempmbWRsNQ%3D%3D&utm_source=qr" class="social-link" aria-label="instagram" target="_blank" rel="noopener">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/rotarycamps?t=OSZ0Hr019cbHH3SxdEqxLQ&s=09" class="social-link" aria-label="x" target="_blank" rel="noopener">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div>
+                    <h3 class="links-title">Quick Links</h3>
+                    <div class="links-grid">
+                        <a href="index.html" class="footer-link">Home</a>
+                        <a href="about.html" class="footer-link">About Us</a>
+                        <a href="projects.html" class="footer-link">Projects</a>
+                        <a href="blogs.html" class="footer-link">Blogs</a>
+                        <a href="contact-us.html" class="footer-link">Get Involved</a>
+                        <a href="contact-us.html" class="footer-link">Contact Us</a>
+                        <a href="donate.html" class="footer-link">Donate Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2025 Rotary Fellowship of Camping. All Rights Reserved.</p>
+            <p class="designer">❤️ Designed by <a href="https://grecotechgraphix.com/" target="_blank" rel="noopener">Grecotech & Graphix</a></p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Page Loader - Show loader on page load and hide when all resources are loaded
+            const pageLoader = document.getElementById('pageLoader');
+            
+            function hideLoader() {
+                if (pageLoader) {
+                    pageLoader.classList.add('hidden');
+                    setTimeout(() => {
+                        pageLoader.style.display = 'none';
+                    }, 500);
+                }
+            }
+
+            // Hide loader when all images and resources are loaded
+            window.addEventListener('load', hideLoader);
+            
+            // Also hide loader after 2 seconds as a fallback
+            setTimeout(hideLoader, 2000);
+
+            // Mobile menu toggle
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+
+            mobileMenuToggle.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                mainNav.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+
+            // Message expand/collapse functionality
+            const expandButtons = document.querySelectorAll('.expand-button');
+            expandButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const messageText = this.closest('.message-content').querySelector('.message-text');
+                    const isExpanded = messageText.classList.toggle('expanded');
+                    
+                    this.setAttribute('aria-expanded', isExpanded);
+                    this.querySelector('span').textContent = isExpanded ? 'Show Less' : 'Read More';
+                    this.classList.toggle('expanded');
+                });
+            });
+
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Parallax effect
+            const bgImage = document.querySelector('.mini-top-banner img.banner-bg');
+            function updateParallax() {
+                const scrollY = window.scrollY;
+                if (bgImage) {
+                    const offset = scrollY * 0.5;
+                    bgImage.style.transform = `translateY(${offset}px)`;
+                }
+            }
+            window.addEventListener('scroll', updateParallax);
+        });
+    </script>
+</body>
+</html>
