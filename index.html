@@ -1,0 +1,3357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotary Fellowship of Camping | People of Action</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4f8c;
+            --primary-dark: #0d3a6b;
+            --primary-light: #2d6bb5;
+            --secondary: #e31b23;
+            --accent: #f9a825;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --medium-gray: #6c757d;
+            --dark-gray: #343a40;
+            --black: #212529;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
+            --shadow-primary: 0 4px 12px rgba(26, 79, 140, 0.3);
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 20px;
+            --radius-round: 50%;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --font-primary: 'Open Sans', sans-serif;
+            --h1: 2.5rem;
+            --h2: 2rem;
+            --h3: 1.75rem;
+            --h4: 1.5rem;
+            --h5: 1.25rem;
+            --h6: 1rem;
+            --base-font-size: 1rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            font-size: var(--base-font-size);
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        /* Popup Ad Styles */
+        .popup-ad-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .popup-ad-overlay.active {
+            display: flex;
+            opacity: 1;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popup-ad-container {
+            position: relative;
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            max-width: 450px;
+            width: 85%;
+            animation: popupSlideIn 0.4s ease-out;
+        }
+
+        @keyframes popupSlideIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .popup-ad-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .popup-ad-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border: none;
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+            z-index: 10001;
+        }
+
+        .popup-ad-close:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            z-index: 10000;
+            transition: all var(--transition-medium);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-sm) 0;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: all var(--transition-medium);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            width: 50px;
+            height: 50px;
+            position: relative;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0;
+            transition: all var(--transition-medium);
+        }
+
+        .mobile-menu-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .mobile-menu-toggle .bar {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: var(--primary);
+            margin: 6px auto;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-radius: 2px;
+            position: relative;
+            left: 0;
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background-color: var(--secondary);
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background-color: var(--secondary);
+        }
+
+        .mobile-menu-toggle.active {
+            transform: rotate(90deg);
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin-right: var(--space-md);
+        }
+
+        .nav-list li {
+            position: relative;
+            margin-left: var(--space-md);
+        }
+
+        .nav-list a {
+            color: var(--dark-gray);
+            font-weight: 500;
+            padding: var(--space-xs) 0;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .nav-list a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width var(--transition-medium);
+        }
+
+        .nav-list a:hover:after,
+        .nav-list a.active:after {
+            width: 100%;
+        }
+
+        .nav-list a.active {
+            color: var(--primary);
+        }
+
+        .nav-cta .button {
+            padding: var(--space-xs) var(--space-md);
+            background-color: var(--secondary);
+            color: var(--white);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-medium);
+        }
+
+        .nav-cta .button:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Events Billboard Responsive Grid */
+        .events-billboard-grid {
+            margin-bottom: var(--space-xl);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .events-billboard-image {
+            width: 100%;
+        }
+
+        .events-billboard-content {
+            background-color: var(--off-white);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 1000px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .main-nav {
+                position: fixed;
+                display: none;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transform: translateX(100%);
+                transition: transform var(--transition-medium);
+                z-index: 1000;
+                padding: var(--space-xl);
+            }
+
+            .main-nav.active {
+                display: flex;
+                transform: translateX(0);
+            }
+
+            .nav-list {
+                flex-direction: column;
+                margin-right: 0;
+                margin-bottom: var(--space-lg);
+                text-align: center;
+            }
+
+            .nav-list li {
+                margin: var(--space-sm) 0;
+            }
+
+            .nav-list a {
+                font-size: var(--h5);
+            }
+        }
+
+        /* Page Loader */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid var(--white);
+            border-right: 4px solid var(--white);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader-text {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .loader-text span {
+            animation: fadeInOut 1.5s ease-in-out infinite;
+        }
+
+        .loader-text span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loader-text span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Hero Slider */
+        .hero-slider {
+            position: relative;
+            height: calc(100vh - 84px);
+            width: 100%;
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .slider-container {
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            display: none;
+            transition: opacity var(--transition-slow);
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+            padding: var(--space-xl);
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+            display: flex;
+        }
+
+        .slide-content {
+            max-width: 95%;
+            transform: translateY(20px);
+            transition: transform var(--transition-slow);
+        }
+
+        .slide.active .slide-content {
+            transform: translateY(0);
+        }
+
+        .slide h1,
+        .slide h2 {
+            color: var(--white);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: var(--space-md);
+        }
+
+        .slide p {
+            color: var(--white);
+        }
+
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .slider-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.2) !important;
+            border: none;
+            border-radius: var(--radius-round);
+            color: var(--white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all var(--transition-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-control:hover {
+            color: var(--primary);
+            background-color: var(--white) !important;
+        }
+
+        .slider-control.prev {
+            left: var(--space-md);
+        }
+
+        .slider-control.next {
+            right: var(--space-md);
+        }
+
+        .slider-indicators {
+            position: absolute;
+            bottom: var(--space-lg);
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: var(--space-sm);
+            z-index: 10;
+        }
+
+        .slider-indicators .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: var(--radius-round);
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-medium);
+            padding: 0;
+        }
+
+        .slider-indicators .indicator.active {
+            background-color: var(--accent) !important;
+            background: var(--accent) !important;
+            transform: scale(1.2);
+        }
+
+        .info-toggle {
+            position: absolute;
+            bottom: var(--space-lg);
+            right: var(--space-lg);
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            border: none;
+            border-radius: var(--radius-round);
+            color: var(--white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all var(--transition-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .info-toggle:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        .slide-info p {
+            margin: 0;
+        }
+
+        .slide-info {
+            position: absolute;
+            bottom: calc(var(--space-lg) + 50px);
+            right: var(--space-lg);
+            max-width: 300px;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: var(--space-lg) var(--space-lg);
+            border-radius: var(--radius-md);
+            color: var(--white);
+            opacity: 0;
+            display: none;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all var(--transition-medium);
+            z-index: 10;
+        }
+
+        .slide-info.active {
+            opacity: 1;
+            display: block;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .close-info {
+            padding: 0;
+            position: absolute;
+            top: var(--space-xs);
+            right: var(--space-sm);
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: var(--space-xl) 0;
+        }
+
+        .section-title {
+            font-size: var(--h2);
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+
+        .text-lg {
+            font-size: var(--h5);
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            color: var(--medium-gray);
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            transition: transform var(--transition-medium);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-cta {
+            margin-top: var(--space-md);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-md);
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: var(--space-lg);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+        }
+
+        .stat-number {
+            font-size: var(--h1);
+            font-weight: 700;
+            margin-bottom: var(--space-xs);
+            color: var(--white);
+        }
+
+        .stat-label {
+            font-size: var(--h6);
+            opacity: 0.9;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background-color: var(--primary-extra-light);
+        }
+
+        .testimonials-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            display: none;
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial.active {
+            display: block;
+        }
+
+        .testimonial-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            text-align: center;
+            position: relative;
+            flex-direction: column;
+        }
+
+        blockquote {
+            padding: 0 1.5rem;
+        }
+
+        .quote-start,
+        .quote-end {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: inline-block;
+        }
+
+        .quote-start {
+            margin-right: 5px;
+        }
+
+        .quote-end {
+            margin-left: 5px;
+        }
+
+        .dotted-line {
+            width: 50px;
+            height: 1px;
+            border-top: 1px dotted var(--primary-light);
+            margin-bottom: var(--space-sm);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-t-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .author-t-image {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-round);
+            margin-right: var(--space-sm);
+            object-fit: cover;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--space-md);
+        }
+
+        .author-t-name {
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100px;
+            margin-bottom: var(--space-md);
+        }
+
+        .author-t-title {
+            color: var(--medium-gray);
+        }
+
+        .testimonial-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: var(--white);
+            border: none;
+            border-radius: var(--radius-round);
+            color: var(--primary);
+            font-size: 1rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all var(--transition-medium);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .testimonial-control:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .testimonial-control.prev {
+            left: -60px;
+        }
+
+        .testimonial-control.next {
+            right: -60px;
+        }
+
+        .testimonial-indicators {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-lg);
+        }
+
+        .testimonial-indicators .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: var(--radius-round);
+            background-color: var(--primary-light);
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-medium);
+            padding: 0;
+        }
+
+        .testimonial-indicators .indicator.active {
+            background-color: var(--primary-dark) !important;
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 968px) {
+            .testimonial-control.prev {
+                left: 20px;
+            }
+
+            .testimonial-control.next {
+                right: 20px;
+            }
+        }
+
+        /* Events & Projects Sliders */
+        .slider-controls {
+            display: flex;
+            margin-top: 3.2rem;
+            margin-bottom: 3rem;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-md);
+        }
+
+        .view-all {
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            color: var(--dark-gray);
+            width: auto;
+            padding: 0 var(--space-lg);
+            height: 40px;
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+            text-decoration: none;
+        }
+
+        .view-all:hover {
+            background: var(--primary-extra-light);
+            color: var(--primary);
+            border-color: var(--primary-light);
+        }
+
+        .view-all i {
+            font-size: 0.9em;
+            margin-left: var(--space-md);
+        }
+
+        .slider-nav {
+            display: flex;
+            gap: var(--space-xs);
+        }
+
+        .slider-prev,
+        .slider-next,
+        .pagination-prev,
+        .pagination-next {
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            color: var(--dark-gray);
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-round);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .slider-prev:hover,
+        .slider-next:hover,
+        .pagination-prev:hover,
+        .pagination-next:hover {
+            background: var(--primary-extra-light);
+            color: var(--primary);
+            border-color: var(--primary-light);
+        }
+
+        .slider-prev:disabled,
+        .slider-next:disabled,
+        .pagination-prev:disabled,
+        .pagination-next:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: var(--light-gray);
+            color: var(--medium-gray);
+        }
+
+        .slider-container {
+            padding: 0 var(--space-md);
+        }
+
+        .activity-card-slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            background: var(--white);
+        }
+
+        .activity-card {
+            transition: transform 0.6s var(--ease-out-expo), opacity 0.6s ease;
+            width: 100%;
+        }
+
+        .activity-card-inner {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .activity-media {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+        }
+
+        .image-container {
+            aspect-ratio: 1 / 1;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .activity-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: auto;
+            height: 100%;
+            max-width: 100%;
+            object-fit: cover;
+            transition: opacity var(--transition-medium);
+        }
+
+        .image-blur {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px);
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .info-badge {
+            position: absolute;
+            bottom: var(--space-sm);
+            right: var(--space-sm);
+            background: var(--white);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-xl);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 80%;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .info-badge.upcoming {
+            background: var(--accent-light);
+            color: var(--accent-dark);
+        }
+
+        .info-badge.ongoing {
+            background: var(--primary-extra-light);
+            color: var(--primary-dark);
+        }
+
+        .info-badge.past {
+            background: var(--light-gray);
+            color: var(--medium-gray);
+        }
+
+        .activity-content {
+            display: flex;
+            flex-direction: column;
+            padding: var(--space-md);
+            flex: 1;
+        }
+
+        .content-top {
+            margin-bottom: var(--space-md);
+        }
+
+        .activity-title {
+            font-size: var(--h4);
+            margin: 0 0 var(--space-xs) 0;
+            color: var(--secondary);
+            font-weight: 700;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .activity-organizer {
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            color: var(--dark-gray);
+            width: auto;
+            padding: 0 var(--space-lg);
+            height: 40px;
+            border-radius: var(--radius-xl);
+            display: flex;
+            gap: var(--space-xs);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .organizer-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: var(--radius-round);
+            overflow: hidden;
+        }
+
+        .organizer-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .organizer-name {
+            color: var(--medium-gray);
+        }
+
+        .content-middle {
+            margin-bottom: var(--space-md) 0;
+            flex: 1;
+        }
+
+        .mini-slider-bar-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            margin-bottom: 0;
+        }
+
+        .mini-slider-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .mini-slider-track {
+            display: flex;
+            transition: transform var(--transition-medium);
+            width: 100%;
+        }
+
+        .mini-slider {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .mini-slide {
+            margin-top: 0.75rem;
+            min-width: 100%;
+            padding: 0 var(--space-xs);
+            box-sizing: border-box;
+            padding-bottom: var(--space-sm);
+        }
+
+        .slide-content {
+            min-height: 220px;
+        }
+
+        .slide-title {
+            font-size: var(--h6);
+            margin: 0 0 var(--space-xs) 0;
+            color: var(--secondary);
+        }
+
+        .slide-text {
+            color: var(--medium-gray);
+            margin: 0 0 var(--space-sm) 0;
+            line-height: 1.5;
+        }
+
+        .event-details,
+        .project-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-top: var(--space-sm);
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--medium-gray);
+        }
+
+        .detail-item i {
+            color: var(--primary);
+        }
+
+        .map-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-size: 0.975rem;
+            color: var(--primary);
+            text-decoration: none;
+            margin-top: var(--space-xs);
+            transition: color var(--transition-fast);
+        }
+
+        .map-link:hover {
+            color: var(--primary-dark);
+        }
+
+        .attendance-meter,
+        .progress-meter {
+            margin: var(--space-sm) 0;
+        }
+
+        .meter-track {
+            height: 6px;
+            background: var(--light-gray);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            margin-bottom: var(--space-xs);
+        }
+
+        .meter-progress {
+            height: 100%;
+            background: var(--primary);
+            border-radius: var(--radius-xl);
+            transition: width var(--transition-slow);
+        }
+
+        .meter-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--medium-gray);
+        }
+
+        .volunteers-info {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-size: 0.975rem;
+            color: var(--medium-gray);
+            margin-top: var(--space-sm);
+        }
+
+        .volunteers-info i {
+            color: var(--primary);
+        }
+
+        .countdown-timer {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-number {
+            display: block;
+            font-size: var(--h4);
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .countdown-label {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--medium-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .materials-list {
+            margin: var(--space-sm) 0;
+            padding-left: var(--space-md);
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+        }
+
+        .materials-list li {
+            margin-bottom: var(--space-xs);
+        }
+
+        .donate-button {
+            background: var(--accent-extra-light);
+            color: var(--accent-dark);
+            border: none;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-md);
+            font-size: 0.975rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            margin-top: var(--space-sm);
+        }
+
+        .donate-button:hover {
+            background: var(--accent-light);
+        }
+
+        .slider-indicator {
+            flex: 1;
+            height: 2px;
+            background: var(--light-gray);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .indicator-line {
+            position: absolute;
+            height: 100%;
+            background: var(--primary);
+            transition: all var(--transition-medium);
+        }
+
+        .mini-slider-prev,
+        .mini-slider-next {
+            background: transparent;
+            border: none;
+            color: var(--medium-gray);
+            width: 30px;
+            height: 30px;
+            border-radius: var(--radius-round);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .mini-slider-prev:hover,
+        .mini-slider-next:hover {
+            background: var(--primary-extra-light);
+            color: var(--primary);
+        }
+
+        .mini-slider-prev:disabled,
+        .mini-slider-next:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .content-bottom {
+            margin-top: auto;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: var(--space-md);
+        }
+
+        .action-buttons.has-calendar .cta-wrap {
+            flex: 1;
+            margin-right: 0.75rem;
+        }
+
+        .action-buttons.has-calendar .calendar-wrap {
+            flex: 0 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .action-buttons.no-calendar {
+            justify-content: center;
+        }
+
+        .action-buttons.no-calendar .cta-wrap {
+            flex: 1;
+            max-width: 100%;
+        }
+
+        .action-buttons.no-calendar .cta-button {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            text-align: center;
+            text-decoration: none;
+            box-shadow: var(--shadow-md);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            box-shadow: var(--shadow-primary);
+            color: var(--white);
+        }
+
+        .cta-button.disabled {
+            background: var(--gray-light);
+            color: var(--medium-gray);
+            cursor: not-allowed;
+            pointer-events: none;
+            box-shadow: none;
+        }
+
+        .cta-button.end-cta {
+            font-style: italic;
+            background: var(--light-gray);
+            color: var(--dark-gray);
+        }
+
+        .calendar-wrap {
+            position: relative;
+        }
+
+        .calendar-btn-wrap {
+            position: relative;
+        }
+
+        .calendar-button {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            padding: 0.75rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 48px;
+            height: 48px;
+            box-shadow: var(--shadow-md);
+            transition: background 0.3s ease;
+        }
+
+        .calendar-button:hover {
+            background: var(--primary-dark);
+        }
+
+        .calendar-dropup {
+            position: absolute;
+            bottom: 120%;
+            right: -4px;
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius-sm);
+            padding: 0.5rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            display: none;
+            z-index: 15;
+            animation: fadeInUp 0.3s ease forwards;
+        }
+
+        .calendar-dropup.show {
+            display: block;
+        }
+
+        .calendar-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.6rem;
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+        }
+
+        .calendar-option i {
+            font-size: 1.1rem;
+        }
+
+        .calendar-option:hover {
+            background: var(--primary-extra-light);
+            color: var(--primary);
+        }
+
+        /* Blog Section */
+        .blog-x-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+        }
+
+        .blog-x-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+        }
+
+        .blog-x-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .blog-x-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .blog-x-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-medium);
+        }
+
+        .blog-x-card:hover .blog-x-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-x-date {
+            position: absolute;
+            top: var(--space-sm);
+            right: var(--space-sm);
+            background-color: var(--primary);
+            color: var(--white);
+            padding: var(--space-xs);
+            border-radius: var(--radius-md);
+            text-align: center;
+            width: 60px;
+        }
+
+        .blog-x-content {
+            padding: var(--space-md);
+        }
+
+        .blog-x-body {
+            margin-bottom: var(--space-md);
+        }
+
+        .blog-x-category {
+            display: inline-block;
+            background: var(--primary-extra-light);
+            color: var(--primary);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+
+        .blog-x-title {
+            font-size: var(--h5);
+            color: var(--secondary);
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
+        }
+
+        .blog-x-excerpt {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        .blog-x-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .blog-x-author {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .author-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: var(--radius-round);
+            object-fit: cover;
+        }
+
+        .author-name {
+            font-size: 0.875rem;
+            color: var(--medium-gray);
+        }
+
+        .read-time {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-size: 0.875rem;
+            color: var(--medium-gray);
+        }
+
+        .section-cta {
+            margin-top: var(--space-lg);
+            text-align: center;
+        }
+
+        /* Join Section */
+        .join-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+        }
+
+        .join-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+
+        .join-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .join-image img {
+            width: 100%;
+            height: auto;
+            transition: transform var(--transition-medium);
+        }
+
+        .join-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .join-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-medium);
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .button-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .button-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .button-outline {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .button-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            opacity: 0.7;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            animation: scrollPattern 100s linear infinite;
+        }
+
+        @keyframes scrollPattern {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-50%);
+            }
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-brand {
+            text-align: center;
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+            display: inline-block;
+            text-decoration: none;
+            transition: all var(--transition-medium);
+        }
+
+        .footer-logo:hover {
+            color: var(--accent) !important;
+            transform: translateY(-3px);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-about {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all var(--transition-medium);
+        }
+
+        .social-link:hover {
+            background: var(--off-white);
+            color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-primary);
+            text-decoration: none;
+        }
+
+        .footer-links {
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .links-title {
+            color: white !important;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all var(--transition-fast);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width var(--transition-medium);
+        }
+
+        .footer-link:hover {
+            color: var(--accent) !important;
+            opacity: 0.9;
+            text-decoration: none;
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
+            background: var(--accent) !important;
+        }
+
+        .footer-link.active {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .footer-link.active::after {
+            background: var(--accent);
+            width: 100%;
+        }
+
+        .footer-bottom {
+            text-align: center;
+        }
+
+        .copyright {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        .designer {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 0;
+        }
+
+        .designer a {
+            color: white;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .designer a:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .events-billboard-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .events-billboard-content {
+                padding: 1.5rem;
+            }
+
+            .footer {
+                padding: 4rem 0;
+            }
+            .footer-about {
+                font-size: 1rem;
+            }
+            .links-grid {
+                gap: 1rem 2rem;
+            }
+            .footer-link {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .events-billboard-content {
+                padding: 1rem;
+            }
+
+            .events-billboard-content h3,
+            .events-billboard-content h4 {
+                font-size: 1.1rem;
+            }
+
+            .events-billboard-content ul li {
+                font-size: 0.9rem;
+            }
+
+            .footer-logo {
+                font-size: 2rem;
+            }
+            .footer-social {
+                gap: 1rem;
+            }
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            .links-grid {
+                gap: 1rem;
+            }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: -50px;
+            right: var(--space-lg);
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-round);
+            cursor: pointer;
+            z-index: 99;
+            transition: all var(--transition-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-to-top.show {
+            bottom: var(--space-lg);
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .about-grid,
+            .join-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+
+            .about-image,
+            .join-image {
+                order: -1;
+            }
+
+            .events-grid,
+            .projects-grid,
+            .blog-x-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-slider {
+                height: 80vh;
+            }
+
+            .slide-content {
+                padding: var(--space-md);
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+
+            .events-grid,
+            .projects-grid,
+            .blog-x-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+		.portrait-master {
+    position: relative;
+    transition: all var(--transition-medium);
+}
+
+.portrait-master:hover {
+    transform: translateY(-5px);
+}
+
+.portrait-frame {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.portrait-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-medium);
+}
+
+.portrait-master:hover .portrait-image {
+    transform: scale(1.05);
+}
+
+.portrait-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 100%);
+    pointer-events: none;
+}
+
+        /* Leadership Highlight Section */
+        .drr-highlight {
+            padding: var(--space-xl) 0;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            color: var(--white);
+        }
+
+        .drr-slider-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .drr-header {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+        }
+
+        .drr-header h2 {
+            font-size: var(--h2);
+            color: var(--white);
+            margin-bottom: var(--space-xs);
+        }
+
+        .drr-content-wrapper {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            flex-wrap: wrap;
+        }
+
+        .drr-portrait {
+            flex: 0 0 300px;
+            order: 1;
+        }
+
+        .drr-message-container {
+            flex: 1;
+            min-width: 300px;
+            order: 2;
+        }
+
+        .drr-footer {
+            margin-top: var(--space-md);
+            text-align: center;
+        }
+
+        .drr-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-md);
+            background: var(--white);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: all var(--transition-medium);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .drr-cta:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .message-slider {
+            position: relative;
+        }
+
+        .message {
+            display: none;
+        }
+
+        .message.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .drr-quote {
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            border-left: 4px solid var(--accent);
+            position: relative;
+        }
+
+        .drr-quote p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+            font-style: italic;
+        }
+
+        .drr-quote footer {
+            color: var(--accent);
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .drr-content-wrapper {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .drr-portrait {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+                order: 1;
+            }
+
+            .portrait-image {
+                height: 350px;
+            }
+
+            .drr-message-container {
+                min-width: auto;
+                width: 100%;
+                order: 2;
+            }
+
+            .drr-quote {
+                border-left: none;
+                border-top: 4px solid var(--accent);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <div class="loader-text">
+                <span>L</span><span>o</span><span>a</span><span>d</span><span>i</span><span>n</span><span>g</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="about.html" aria-label="Rotary Fellowship of Camping">
+                        <img src="logo.png" alt="Rotary Fellowship of Camping Logo">
+                    </a>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="messages.html">Messages</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+
+                    <div class="nav-cta">
+                        <a href="donate.html" class="button">Donate Now</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <section class="hero-slider" aria-label="Rotary Fellowship of Camping Highlights">
+        <div class="slider-container">
+            <div class="slide active" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('IMG_0631.jpg');">
+                <div class="slide-content">
+                    <h2>Rotary Fellowship of Camping</h2>
+                    <p class="text-xl">People of Action Creating Positive Change</p>
+                    <div class="hero-cta">
+                        <a href="about.html" class="button button-primary">Learn More</a>
+                        <a href="contact-us.html" class="button button-outline">Contact Us</a>
+                    </div>
+                </div>
+                <button class="info-toggle" aria-label="More information about this slide">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+                <div class="slide-info">
+                    <p>Rotary Fellowship of Camping unites young leaders across the district, driving impactful service while nurturing leadership, fellowship, and personal growth.</p>
+                    <div class="close-info" aria-label="Close information">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('IMG_9887.jpg');">
+                <div class="slide-content">
+                    <h2>Serving Our Communities</h2>
+                    <p class="text-xl">Making a difference where it matters most</p>
+                </div>
+                <button class="info-toggle" aria-label="More information about this slide">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+                <div class="slide-info">
+                    <p>Our club dedicates hundreds of volunteer hours every year, addressing local challenges with hands-on service and compassion.</p>
+                    <div class="close-info" aria-label="Close information">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('IMG_0016.jpg');">
+                <div class="slide-content">
+                    <h2>Developing Leaders</h2>
+                    <p class="text-xl">Building skills for tomorrow's challenges</p>
+                </div>
+                <button class="info-toggle" aria-label="More information about this slide">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+                <div class="slide-info">
+                    <p>Through mentorship and training, Rotary Fellowship of Camping empowers members to take initiative and lead transformative projects in their communities.</p>
+                    <div class="close-info" aria-label="Close information">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('IMG_1795.jpg');">
+                <div class="slide-content">
+                    <h2>Opportunity for Networking</h2>
+                    <p class="text-xl">Connecting with Rotary Fellowship of Camping</p>
+                </div>
+                <button class="info-toggle" aria-label="More information about this slide">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+                <div class="slide-info">
+                    <p>To provide opportunity for networking and collaborations through Camping and fun events among interested individuals, Rotary clubs and Rotarians / non Rotarians world over</p>
+                    <div class="close-info" aria-label="Close information">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-control prev" aria-label="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="slider-control next" aria-label="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="slider-indicators">
+                <button class="indicator active" aria-label="Go to slide 1"></button>
+                <button class="indicator" aria-label="Go to slide 2"></button>
+                <button class="indicator" aria-label="Go to slide 3"></button>
+                <button class="indicator" aria-label="Go to slide 4"></button>
+            </div>
+        </div>
+    </section>
+
+    <main id="main-content">
+        <!-- About Section -->
+        <section class="section about-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <h2 class="section-title">Welcome to Rotary Fellowship of Camping</h2>
+                        <p class="text-center text-lg">
+                            Rotary Fellowship of Camping is a group of friends, Rotarians and family that share a common passion of Camping and fun. It is built on a promise of making new friends, bonding and network through fun around the world but most importantly explore a hobby of Camping while serving the communities around the world.   
+                    <br>"Every coin saves a life"</br>
+                        </p>
+                        <div class="about-cta">
+                            <a href="about.html" class="button button-primary">Learn More About Us</a>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="IMG_9612.jpg" alt="Rotary Fellowship of Camping members working together on a community project" loading="lazy" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Stats Section -->
+        <section class="section stats-section">
+            <div class="container">
+                <h2 class="section-title" style="color: var(--white);">Our Impact in Numbers</h2>
+                <p class="text-center text-lg" style="margin-bottom: var(--space-lg); color: var(--white);">
+                    We measure our success by the positive change we create in our communities
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="77">0</div>
+                        <div class="stat-label">Rotary Clubs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="5">0</div>
+                        <div class="stat-label">Rotaract Clubs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="250">0</div>
+                        <div class="stat-label">Members</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="50">0</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <!--<div class="stat-item">
+                        <div class="stat-number" data-count="500">0</div>
+                        <div class="stat-label">Volunteer Hours</div>
+                    </div>-->
+                </div>
+                <p class="text-center text-lg" style="margin-top: var(--space-lg); color: rgba(255, 255, 255, 0.95); max-width: 800px; margin-left: auto; margin-right: auto; font-style: italic;">
+                    <strong>Our 250 Members</strong> represent a diverse, international community from <strong>Zambia, South Africa, Nigeria, Kenya, Tanzania, Ethiopia</strong>, and beyond, united by our shared passion for camping and service.
+                </p>
+            </div>
+        </section>
+
+        <!-- President's Message -->
+        <section class="drr-highlight" aria-labelledby="drr-title">
+            <div class="container">
+                <div class="drr-slider-container">
+                    <div class="drr-header">
+                        <h2 id="drr-title"> Rtn. Irene Nakanwagi</h2>
+                    </div>
+                    <div class="drr-content-wrapper">
+                        <div class="drr-portrait">
+                            <div class="portrait-master" data-drr-code="2025-2026">
+                                <div class="portrait-frame">
+                                    <img src="IMG_9825.jpg" alt="Irene Nakanwagi Portrait" class="portrait-image" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x400/1a4f8c/ffffff?text=Irene+Nakanwagi';" />
+                                    <div class="portrait-overlay"></div>
+                                </div>
+                                <div class="drr-footer">
+                                    <a href="about.html" class="drr-cta">
+                                        <span class="drr-role-label">Meet the Executive Director</span>
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="drr-message-container">
+                            <div class="message-slider">
+                                <div class="message active" data-month="2025-10" data-display="October 2025" data-drr-code="2025-2026" data-drr-name="Rtn. Irene Nakanwagi" data-drr-role="Executive Director" data-drr-image="https://via.placeholder.com/300x400/1a4f8c/ffffff?text=Rtn.+Irene+Nakanwagi">
+                                    <blockquote class="drr-quote">
+                                        <p>Rotary Fellowship of Camping is a group of friends, Rotarians and family that share a common  passion of Camping and fun. It is built on a promise of making new friends, bonding and network through fun around the world but most importantly explore a hobby of Camping while serving the communities around the world.</p>
+                                        <p> The purpose of this Rotary Fellowship is to provide a Camping platform for any interested individuals to network, collaborate and raise funds towards the support of service projects and above all the opportunity to enhance health and wellbeing of those suffering with congenital heart conditions in our communities</p>
+                                        <footer>
+                                            Rtn. Irene Nakanwagi Luweesi
+                                            <br />
+                                            Executive Director of the Rotary Fellowship of Camping
+                                        </footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="section testimonials-section">
+            <div class="container">
+                <h2 class="section-title">What Our Members Say</h2>
+                <p class="text-center text-lg" style="margin-bottom: var(--space-lg);">
+                    Hear from Rotary Fellowship of Campers about their experiences
+                </p>
+                <div class="testimonials-slider">
+                    <div class="testimonial active">
+                        <div class="testimonial-content">
+                            <img src="JaliaExeSec.png" alt="Jalia Kiganda" class="author-t-image" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/60x60/1a4f8c/ffffff?text=Jalia';" />
+                            <div class="author-t-name">Jalia Kiganda</div>
+                            <blockquote>
+                                <p>
+                                    <span class="quote-start">"</span>
+                                    Rotary Fellowship of Camping has transformed my life. The leadership skills I've gained and the friendships I've made are invaluable. Every service project reminds me that we can make a real difference in our communities.
+                                    <span class="quote-end">"</span>
+                                </p>
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <div class="author-t-info">
+                                    <div class="dotted-line"></div>
+                                    <div class="author-t-title">Sectretary, Rotary Fellowship of Camping</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <img src="KatimboChairOper.png" alt="Katimbo Julio" class="author-t-image" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/60x60/1a4f8c/ffffff?text=Katimbo    ';" />
+                            <div class="author-t-name">Katimbo Julio</div>
+                            <blockquote>
+                                <p>
+                                    <span class="quote-start">"</span>
+                                    Through Rotary Fellowship of Camping, I've had opportunities to work on projects that address real community needs while developing professional skills that have helped me in my career. It's the perfect blend of service and self-development.
+                                    <span class="quote-end">"</span>
+                                </p>
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <div class="author-t-info">
+                                    <div class="dotted-line"></div>
+                                    <div class="author-t-title">Operations</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <img src="SubiraMobili.png" alt="Muwanga Subira" class="author-t-image" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/60x60/1a4f8c/ffffff?text=Amina';" />
+                            <div class="author-t-name">Muwanga Subira</div>
+                            <blockquote>
+                                <p>
+                                    <span class="quote-start">"</span>
+                                    The international network of Rotary Fellowship of Camping has given me friends across continents and perspectives I could never have gained otherwise. It's amazing to be part of a global movement of young leaders.
+                                    <span class="quote-end">"</span>
+                                </p>
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <div class="author-t-info">
+                                    <div class="dotted-line"></div>
+                                    <div class="author-t-title">Mobilization</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-control prev" aria-label="Previous testimonial">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="testimonial-control next" aria-label="Next testimonial">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="testimonial-indicators">
+                        <div class="indicator active" aria-label="Go to testimonial 1"></div>
+                        <div class="indicator" aria-label="Go to testimonial 2"></div>
+                        <div class="indicator" aria-label="Go to testimonial 3"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section  -->
+        <section class="classic-slider-section">
+            <div style="padding: 6rem 0 0.5rem 0;">
+                <div class="classic-slider-header">
+                    <h2 class="section-title">Events Billboard</h2>
+                    <p class="text-center text-lg" style="margin-bottom: var(--space-xl);">
+                        Join us for our engaging activities and meetings
+                    </p>
+                </div>
+                <div class="container">
+                    <div class="events-billboard-grid">
+                        <div class="events-billboard-image">
+                            <img src="ad.jpeg" alt="7th Camping Edition Event" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                        </div>
+                        <div class="events-billboard-content">
+                            <h3 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.5rem;">🌟 Join the Adventure of a Lifetime! 🌟</h3>
+                            <p style="margin-bottom: 1rem; font-weight: 600; color: var(--dark-gray);">Get ready for the 7th Camping Edition 🚙🏕️</p>
+                            <p style="margin-bottom: 1rem; color: var(--dark-gray);">This epic camping experience is brought to you by the Rotary Fellowship of Camping, with a heartwarming cause 💖 – raising funds to cater for cardiovascular problems among children. By joining this adventure, you're not only making unforgettable memories but also contributing to a meaningful mission!</p>
+                            
+                            <h4 style="color: var(--primary); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.1rem;">📝 Event Details:</h4>
+                            <ul style="list-style: none; margin-bottom: 1rem; color: var(--dark-gray);">
+                                <li>✓ <strong>Dates:</strong> August 7-9, 2026</li>
+                                <li>✓ <strong>Location:</strong> Naivasha West Beach Camp, Kenya</li>
+                                <li>✓ <strong>Purpose:</strong> Support kids with cardiovascular issues 💖</li>
+                            </ul>
+
+                            <h4 style="color: var(--primary); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.1rem;">💰 Pricing:</h4>
+                            <ul style="list-style: none; margin-bottom: 1rem; color: var(--dark-gray);">
+                                <li>• <strong>Campers:</strong> UGX 1,000,000</li>
+                                <li>• <strong>Non-Campers:</strong> UGX 1,200,000</li>
+                                <li>• <strong>Kenyans:</strong> KES 30,000</li>
+                            </ul>
+
+                            <h4 style="color: var(--primary); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.1rem;">📞 Contact Information:</h4>
+                            <ul style="list-style: none; margin-bottom: 1rem; color: var(--dark-gray);">
+                                <li>• <strong>Rtn. Nyakato Eva:</strong> +256-702332368</li>
+                                <li>• <strong>Rtn. Elsie Nsubuga:</strong> +256-772380555</li>
+                                <li>• <strong>Rtn. Dominic Wachira (RC Naivasha President):</strong> +254-725464969</li>
+                            </ul>
+
+                            <p style="background-color: var(--primary); color: var(--white); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1rem; text-align: center; font-weight: 600;">💳 Payments to: Rotary Fellowship of Camping, Centenary Bank, 3100094880</p>
+
+                            <p style="color: var(--primary); font-size: 1.1rem; font-weight: 600; text-align: center;">🌍 Karibu Kenya! 🇰🇪</p>
+                            <p style="color: var(--dark-gray); text-align: center; font-style: italic;">Come for the adventure, stay for the cause. Join us for an unorgettable camping experience.</p>
+                        </div>
+                    </div>
+                    <div class="slider-controls">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Project Section -->
+        <section class="upcoming-project-section">
+            <div class="container">
+                <div class="upcoming-project-header">
+                    <h2 class="section-title">🚀 Upcoming Initiative</h2>
+                    <p class="text-lg">Fundraising for Cardiovascular Care for Children</p>
+                </div>
+                <div class="upcoming-project-card">
+                    <div class="project-badge">UPCOMING</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Cardiovascular Support for Children</h3>
+                        <p class="project-description">
+                            This epic camping experience is brought to you by the Rotary Fellowship of Camping, with a heartwarming cause 💖 – raising funds to cater for cardiovascular problems among children. Through our 7th Camping Edition (August 7-9, 2026), we will support critical cardiac care, surgeries, and life-saving medical equipment for children with cardiovascular issues.
+                        </p>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span><strong>Location:</strong> Naivasha West Beach Camp, Kenya</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-heart"></i>
+                                <span><strong>Focus:</strong> Cardiac care, surgeries, and medical equipment for children</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span><strong>Event Date:</strong> August 7-9, 2026</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-users"></i>
+                                <span><strong>Beneficiaries:</strong> Children with cardiovascular problems</span>
+                            </div>
+                        </div>
+                        <p class="project-call-to-action">
+                            Join our camping adventure and make a direct impact! Every registration fee, fundraiser activity, and donation during the camping event goes directly to supporting children in need of cardiac care. Together, we can provide life-saving treatment and equipment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+
+        <!-- Blog Section -->
+        <section class="section blog-x-section">
+            <div class="container">
+                <h2 class="section-title">Latest News & Updates</h2>
+                <p class="text-center text-lg" style="margin-bottom: var(--space-lg);">
+                    Stay informed about our activities and impact
+                </p>
+                <div class="blog-x-grid">
+                    <article class="blog-x-card">
+                        <a href="blog-post-mem.html" style="text-decoration: none;">
+                            <div class="blog-x-image">
+                                <img src="IMG_0779.jpg" alt="Tent life is the best life!" loading="lazy" />
+                                <div class="blog-x-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    Feb 15, 2025
+                                </div>
+                            </div>
+                            <div class="blog-x-content">
+                                <div class="blog-x-body">
+                                    <span class="blog-x-category">Member Stories</span>
+                                    <h3 class="blog-x-title">Tent life is the best life! 🏕️</h3>
+                                    <p class="blog-x-excerpt">
+                                        This picture perfectly captures the spirit of Rotarians and friends getting into the Camp Life—ready to unpack more than just our bags! Beyond the stunning scenery and the great fellowship around the bonfire, this event was a major fundraiser aimed at supporting crucial cardiovascular projects
+                                    </p>
+                                </div>
+                                <div class="blog-x-meta">
+                                    <div class="blog-x-author">
+                                        <img src="Prossy.jpg" alt="Namatovu P." class="author-avatar" loading="lazy" />
+                                        <span class="author-name">Namatovu P.</span>
+                                    </div>
+                                    <div class="read-time">
+                                        <i class="fas fa-clock"></i>
+                                        7 min
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="blog-x-card">
+                        <a href="blog-post-leadership.html" style="text-decoration: none;">
+                            <div class="blog-x-image">
+                                <img src="lead.jpg" alt="Leadership Lessons From Our Camping️" loading="lazy" />
+                                <div class="blog-x-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    Apr 10, 2025
+                                </div>
+                            </div>
+                            <div class="blog-x-content">
+                                <div class="blog-x-body">
+                                    <span class="blog-x-category">Leadership</span>
+                                    <h3 class="blog-x-title">Leadership Lessons From Our Camping️</h3>
+                                    <p class="blog-x-excerpt">
+                                        The Rotary Fellowship of Camping is about more than just pitching a tent; it’s a living laboratory for cultivating effective leadership. This photo, capturing a moment of well-deserved recognition by Rotary International, perfectly illustrates the core lessons we learn in the great outdoors.
+                                    </p>
+                                </div>
+                                <div class="blog-x-meta">
+                                    <div class="blog-x-author">
+                                        <img src="Prossy.jpg" alt="Rtn. Namatovu P." class="author-avatar" loading="lazy" />
+                                        <span class="author-name">Rtn. Namatovu P.</span>
+                                    </div>
+                                    <div class="read-time">
+                                        <i class="fas fa-clock"></i>
+                                        5 min
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="blog-x-card">
+                        <a href="blog-post-ECG.html" style="text-decoration: none;">
+                            <div class="blog-x-image">
+                                <img src="project1.png" alt="Donation of ECG machines" loading="lazy" />
+                                <div class="blog-x-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    Apr 15, 2025
+                                </div>
+                            </div>
+                            <div class="blog-x-content">
+                                <div class="blog-x-body">
+                                    <span class="blog-x-category">Service Projects</span>
+                                    <h3 class="blog-x-title">Donation of ECG machines</h3>
+                                    <p class="blog-x-excerpt">
+                                      We are incredibly proud to share this moment: the successful donation of 5 vital Electrocardiogram (ECG) machines to Uganda Heart Institute in Mulago, Jinja, Mbarara, Masaka Regional Referral Hospitals, and Busolwe General Hospital in Butaleja. These machines have been used to help over 10,000 patients. Additionally, 12 children have been supported for heart surgeries. This initiative was the primary focus of our recent major camping fundraiser, demonstrating that the funds raised around the campfire directly translate into life-saving equipment and healthcare for our communities.
+                                    </p>
+                                </div>
+                                <div class="blog-x-meta">
+                                    <div class="blog-x-author">
+                                        <img src="ok.jpg" alt="Emmanuel Oketch" class="author-avatar" loading="lazy" />
+                                        <span class="author-name">Rtn. Emmanuel Oketch</span>
+                                    </div>
+                                    <div class="read-time">
+                                        <i class="fas fa-clock"></i>
+                                        8 min
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+                <div class="section-cta text-center">
+                    <a href="blogs.html" class="button button-primary">View All Posts</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Join Section -->
+        <section class="section join-section">
+            <div class="container">
+                <div class="join-grid">
+                    <div class="join-content">
+                        <h2 class="section-title" style="color: var(--white);">Ready to Make a Difference?</h2>
+                        <p class="text-center text-lg" style="margin-bottom: 3rem; color: var(--white);">
+                            Join Rotary Fellowship of Camping and become part of a global network of young leaders creating positive change in their communities.
+                        </p>
+                        <div class="join-cta">
+                            <a href="contact-us.html" class="button button-primary">Get Involved</a>
+                            <a href="about.html" class="button button-outline">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="join-image">
+                        <img src="IMG_0721.jpg" alt="Rotary Fellowship of Camping members celebrating" loading="lazy" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">Rotary Fellowship of Camping</a>
+                <p class="footer-about">
+                    Rotary Fellowship of Camping is a group of friends, Rotarians and family that share a common passion of Camping and fun. It is built on a promise of making new friends, bonding and network through fun around the world but most importantly explore a hobby of Camping while serving the communities around the world.
+                </p>
+
+                <div class="footer-social">
+                    <a href="https://www.tiktok.com/@rotary.camping.ug?_t=ZM-90xGYxHomuS&_r=1" class="social-link" aria-label="tiktok" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.instagram.com/rotary_camping_ug?igsh=MXNtMnFkempmbWRsNQ%3D%3D&utm_source=qr" class="social-link" aria-label="instagram" target="_blank" rel="noopener">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/rotarycamps?t=OSZ0Hr019cbHH3SxdEqxLQ&s=09" class="social-link" aria-label="x" target="_blank" rel="noopener">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3 class="links-title">Quick Links</h3>
+                <div class="links-grid">
+                    <a href="index.html" class="footer-link active">Home</a>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="projects.html" class="footer-link">Projects</a>
+                    <a href="blogs.html" class="footer-link">Blogs</a>
+                    <a href="contact-us.html" class="footer-link">Get Involved</a>
+                    <a href="contact-us.html" class="footer-link">Contact Us</a>
+                    <a href="donate.html" class="footer-link">Donate Now</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2025 Rotary Fellowship of Camping. All Rights Reserved.</p>
+                <p class="designer">❤️Designed by <a href="https://grecotechgraphix.com/" target="_blank" rel="noopener">Grecotech&graphix</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Page Loader - Show loader on page load and hide when all resources are loaded
+            const pageLoader = document.getElementById('pageLoader');
+            
+            function hideLoader() {
+                if (pageLoader) {
+                    pageLoader.classList.add('hidden');
+                    setTimeout(() => {
+                        pageLoader.style.display = 'none';
+                    }, 500);
+                }
+            }
+
+            // Hide loader when all images and resources are loaded
+            window.addEventListener('load', hideLoader);
+            
+            // Also hide loader after 2 seconds as a fallback
+            setTimeout(hideLoader, 2000);
+
+            // Mobile menu toggle
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+
+            mobileMenuToggle.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                mainNav.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+
+            // Hero Slider
+            let heroSlides = [];
+            let heroIndicators = [];
+            let sliderContainer = null;
+            let nextBtn = null;
+            let prevBtn = null;
+            let slideTimer = null;
+            let currentSlide = 0;
+            const slideInterval = 5000;
+
+            function startSlideTimer() {
+                slideTimer = setInterval(nextSlide, slideInterval);
+            }
+
+            function stopSlideTimer() {
+                clearInterval(slideTimer);
+            }
+
+            function closeOpenInfo() {
+                const openInfo = document.querySelector('.slide-info.active');
+                if (openInfo) {
+                    openInfo.classList.remove('active');
+                }
+            }
+
+            function showSlide(index) {
+                if (!heroSlides[index] || !heroIndicators[index]) return;
+
+                heroSlides.forEach(slide => slide.classList.remove('active'));
+                heroIndicators.forEach(indicator => indicator.classList.remove('active'));
+
+                heroSlides[index].classList.add('active');
+                heroIndicators[index].classList.add('active');
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                closeOpenInfo();
+                const newIndex = (currentSlide + 1) % heroSlides.length;
+                showSlide(newIndex);
+            }
+
+            function prevSlide() {
+                closeOpenInfo();
+                const newIndex = (currentSlide - 1 + heroSlides.length) % heroSlides.length;
+                showSlide(newIndex);
+            }
+
+            heroSlides = document.querySelectorAll('.hero-slider .slide');
+            heroIndicators = document.querySelectorAll('.hero-slider .slider-indicators .indicator');
+            sliderContainer = document.querySelector('.hero-slider .slider-container');
+            nextBtn = document.querySelector('.hero-slider .next');
+            prevBtn = document.querySelector('.hero-slider .prev');
+            const infoToggles = document.querySelectorAll('.info-toggle');
+            const closeInfoButtons = document.querySelectorAll('.close-info');
+
+            if (heroSlides.length > 0 && sliderContainer) {
+                if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+                if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+                sliderContainer.addEventListener('mouseenter', stopSlideTimer);
+                sliderContainer.addEventListener('mouseleave', startSlideTimer);
+
+                heroIndicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        closeOpenInfo();
+                        showSlide(index);
+                    });
+                });
+
+                infoToggles.forEach(toggle => {
+                    toggle.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const infoBox = this.nextElementSibling;
+                        if (!infoBox) return;
+
+                        if (!infoBox.classList.contains('active')) {
+                            stopSlideTimer();
+                            infoBox.classList.add('active');
+                        } else {
+                            infoBox.classList.remove('active');
+                            startSlideTimer();
+                        }
+                    });
+                });
+
+                closeInfoButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        this.parentElement.classList.remove('active');
+                        startSlideTimer();
+                    });
+                });
+
+                showSlide(0);
+                startSlideTimer();
+            }
+
+            // Testimonials Slider
+            const testimonials = document.querySelectorAll('.testimonials-slider .testimonial');
+            const testimonialIndicators = document.querySelectorAll('.testimonials-slider .testimonial-indicators .indicator');
+            let currentTestimonial = 0;
+
+            function showTestimonial(index) {
+                testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+                testimonialIndicators.forEach(indicator => indicator.classList.remove('active'));
+
+                testimonials[index].classList.add('active');
+                testimonialIndicators[index].classList.add('active');
+                currentTestimonial = index;
+            }
+
+            document.querySelector('.testimonials-slider .next').addEventListener('click', () => {
+                let newIndex = (currentTestimonial + 1) % testimonials.length;
+                showTestimonial(newIndex);
+            });
+
+            document.querySelector('.testimonials-slider .prev').addEventListener('click', () => {
+                let newIndex = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+                showTestimonial(newIndex);
+            });
+
+            testimonialIndicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => showTestimonial(index));
+            });
+
+            showTestimonial(0);
+
+            // Stats Counter Animation
+            const statNumbers = document.querySelectorAll('.stat-number');
+
+            function animateStats() {
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-count'));
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+
+                    const counter = setInterval(() => {
+                        current += step;
+                        if (current >= target) {
+                            clearInterval(counter);
+                            stat.textContent = target.toLocaleString();
+                        } else {
+                            stat.textContent = Math.floor(current).toLocaleString();
+                        }
+                    }, 16);
+                });
+            }
+
+            const statsSection = document.querySelector('.stats-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateStats();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            observer.observe(statsSection);
+
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Events and Projects Sliders
+            const projects = [{
+                "unique_id": 715785883,
+                "class": "PROJECT",
+                "title": "Clean Water Initiative - 2025",
+                "category": "675923613",
+                "sub_category": "Environment",
+                "project_status": "ONGOING",
+                "timestamp_start": "2025-10-03 05:00:00",
+                "timestamp_finish": "2025-10-05 13:00:00",
+                "location": "Uganda",
+                "video": "https://www.youtube.com/watch?v=sFPydv-9W5I",
+                "excerpt": "Providing clean water access to rural communities through well construction and water purification systems.",
+                "organizer": "Rotary Fellowship of Camping",
+                "organizer_type": "Rotary Fellowship of Camping",
+                "organizer_logo": "eddy.jpg",
+                "cta_status": "TRUE",
+                "cta": "LINK",
+                "cta_text": "Learn More",
+                "cta_link": "projects.html",
+                "map_link": null,
+                "fee_note": "Community-funded initiative"
+            }];
+
+            const events = [{
+                "unique_id": 519213666,
+                "class": "EVENT",
+                "title": "Youth Leadership Workshop 2025",
+                "category": "633368373",
+                "sub_category": "Workshop",
+                "timestamp_start": "2025-11-21 06:00:00",
+                "timestamp_finish": "2025-11-21 14:00:00",
+                "location": "Town Hall",
+                "image": "https://via.placeholder.com/400x400/1a4f8c/ffffff?text=Youth+Workshop",
+                "excerpt": "Empowering young leaders with skills in public speaking, project management, and community development.",
+                "organizer": "Rotary Fellowship of Camping",
+                "organizer_type": "Rotary Fellowship of Camping",
+                "organizer_logo": "https://via.placeholder.com/30x30/1a4f8c/ffffff?text=RL",
+                "cta_status": "TRUE",
+                "cta": "LINK",
+                "cta_text": "Register Now",
+                "cta_link": "#",
+                "map_link": null,
+                "highlight": "Free workshop for youth aged 18-30",
+                "attendees": 0,
+                "capacity": 100
+            }];
+
+            let sliderIndexes = {
+                events: 0,
+                projects: 0
+            };
+
+            function setupSlider(type, dataArray) {
+                const cardId = `slider-card-${type}`;
+                const sliderCard = document.getElementById(cardId);
+                const prevBtn = document.querySelector(`.slider-prev[data-slider="${type}"]`);
+                const nextBtn = document.querySelector(`.slider-next[data-slider="${type}"]`);
+
+                if (!sliderCard || !dataArray || !dataArray.length) return;
+
+                renderSliderCard(type, dataArray, sliderIndexes[type]);
+
+                prevBtn.addEventListener('click', () => {
+                    sliderIndexes[type] = (sliderIndexes[type] - 1 + dataArray.length) % dataArray.length;
+                    animateSliderTransition(type, sliderCard, dataArray);
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    sliderIndexes[type] = (sliderIndexes[type] + 1) % dataArray.length;
+                    animateSliderTransition(type, sliderCard, dataArray);
+                });
+            }
+
+            function animateSliderTransition(type, sliderCard, dataArray) {
+                sliderCard.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+                sliderCard.style.transform = 'translateX(-100%)';
+                sliderCard.style.opacity = '0';
+
+                setTimeout(() => {
+                    renderSliderCard(type, dataArray, sliderIndexes[type]);
+                    sliderCard.style.transition = 'none';
+                    sliderCard.style.transform = 'translateX(100%)';
+                    sliderCard.style.opacity = '0';
+                    sliderCard.getBoundingClientRect();
+                    sliderCard.style.transition = 'transform 0.6s ease, opacity 0.6s ease';
+                    sliderCard.style.transform = 'translateX(0)';
+                    sliderCard.style.opacity = '1';
+                }, 300);
+            }
+
+            function renderSliderCard(type, dataArray, index) {
+                const sliderCard = document.getElementById(`slider-card-${type}`);
+                if (!sliderCard || !dataArray[index]) return;
+
+                const cardHTML = createActivityCardHTML(dataArray[index], true);
+                sliderCard.innerHTML = cardHTML;
+                initMiniSlider(sliderCard);
+            }
+
+            function createActivityCardHTML(activity, isSlider) {
+                if (!activity || typeof activity !== 'object') return '';
+
+                const isEvent = activity.class === "EVENT";
+
+                let eventStart = activity.timestamp_start ? new Date(activity.timestamp_start) : null;
+                let eventFinish = activity.timestamp_finish ? new Date(activity.timestamp_finish) : null;
+                if (eventStart) {
+                    if (!eventFinish || eventFinish < eventStart) {
+                        eventFinish = new Date(eventStart.getTime() + 3 * 60 * 60 * 1000);
+                    }
+                }
+
+                const now = new Date();
+                let dynamicStatus = '';
+                if (isEvent && eventStart) {
+                    if (now > eventFinish) dynamicStatus = 'past';
+                    else if (now < eventStart) dynamicStatus = 'upcoming';
+                    else dynamicStatus = 'ongoing';
+                } else if (!isEvent && activity.project_status) {
+                    dynamicStatus = activity.project_status.toLowerCase();
+                } else {
+                    dynamicStatus = 'unknown';
+                }
+
+                let badgeClass = '';
+                if (dynamicStatus === 'past' || dynamicStatus === 'completed') badgeClass = 'past';
+                else if (dynamicStatus === 'ongoing') badgeClass = 'ongoing';
+                else if (dynamicStatus === 'upcoming') badgeClass = 'upcoming';
+                else if (dynamicStatus === 'on_hold') badgeClass = 'on-hold';
+                else if (dynamicStatus === 'unknown') badgeClass = 'unknown';
+
+                let primaryCTA = '';
+
+                if (isEvent && dynamicStatus === 'past') {
+                    primaryCTA = `<div class="cta-button disabled end-cta">Event has ended</div>`;
+                } else if (!isEvent && dynamicStatus !== 'ongoing') {
+                    const label = dynamicStatus.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+                    primaryCTA = `<div class="cta-button disabled end-cta">${label || 'Project Ended'}</div>`;
+                } else if (activity.cta_status === "TRUE") {
+                    if (activity.cta === "LINK") {
+                        primaryCTA = `
+                            <a href="${activity.cta_link}" ${activity.cta_link.startsWith('http') ? 'target="_blank"' : ''} class="cta-button">
+                                ${activity.cta_text}
+                            </a>
+                        `;
+                    } else {
+                        primaryCTA = `
+                            <button class="cta-button form-trigger" data-activity-id="${activity.unique_id}">
+                                ${activity.cta_text}
+                            </button>
+                        `;
+                    }
+                } else {
+                    primaryCTA = `
+                        <button class="cta-button share-button">
+                            Share ${isEvent ? 'Event' : 'Project'}
+                        </button>
+                    `;
+                }
+
+                const actionButtonsHTML = `
+                    <div class="action-buttons no-calendar">
+                        <div class="cta-wrap">
+                            ${primaryCTA}
+                        </div>
+                    </div>
+                `;
+
+                const miniSliderItems = `
+                    <div class="mini-slide">
+                        <div class="slide-content">
+                            <h4 class="slide-title">Info</h4>
+                            <p class="slide-text">${activity.excerpt}</p>
+                            ${isEvent ? `
+                                <div class="event-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-calendar-day"></i>
+                                        <span>${formatReadableDateRange(activity.timestamp_start, activity.timestamp_finish)}</span>
+                                    </div>
+                                </div>
+                            ` : `
+                                <div class="project-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-calendar-day"></i>
+                                        <span>${formatReadableDateRange(activity.timestamp_start, activity.timestamp_finish)}</span>
+                                    </div>
+                                </div>
+                            `}
+                        </div>
+                    </div>
+                `;
+
+                return `
+                    <div class="activity-card-inner">
+                        <div class="activity-media">
+                            <a href="${activity.image}" data-fancybox="gallery-${activity.unique_id}" data-caption="${activity.title}">
+                                <div class="image-container">
+                                    <div class="image-wrapper">
+                                        <img src="${activity.image}" alt="${activity.title}" class="activity-image" loading="lazy">
+                                        <div class="image-blur" style="background-image: url('${activity.image}')"></div>
+                                    </div>
+                                    <div class="image-overlay"></div>
+                                    <div class="info-badge ${badgeClass}">
+                                        ${activity.sub_category} • ${isEvent ? 'Event' : 'Project'}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="activity-content">
+                            <div class="content-top">
+                                <div class="activity-organizer">
+                                    <div class="organizer-avatar">
+                                        <img src="${activity.organizer_logo}" alt="${activity.organizer}" loading="lazy">
+                                    </div>
+                                    <span class="organizer-name">${activity.organizer}</span>
+                                </div>
+                                <h3 class="activity-title">${activity.title}</h3>
+                            </div>
+                            <div class="content-middle">
+                                <div class="mini-slider-bar-container">
+                                    <button class="mini-slider-prev" aria-label="Previous info">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <div class="slider-indicator">
+                                        <div class="indicator-line"></div>
+                                    </div>
+                                    <button class="mini-slider-next" aria-label="Next info">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                                <div class="mini-slider-container">
+                                    <div class="mini-slider">
+                                        <div class="mini-slider-track">
+                                            ${miniSliderItems}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-bottom">
+                                ${actionButtonsHTML}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function formatReadableDateRange(startTimestamp, endTimestamp) {
+                const start = new Date(startTimestamp);
+                const end = new Date(endTimestamp);
+
+                const sameDay = start.toDateString() === end.toDateString();
+                const sameYear = start.getFullYear() === end.getFullYear();
+
+                if (sameDay) {
+                    return `${start.toLocaleDateString('en-US', {
+                        weekday: 'short',
+                        day: 'numeric',
+                        month: 'short',
+                        year: 'numeric'
+                    })} | ${formatReadableTime(start)} - ${formatReadableTime(end)} | EAT`;
+                }
+
+                if (sameYear) {
+                    return `${getOrdinal(start.getDate())} ${start.toLocaleString('en-US', { month: 'short' })} - ${getOrdinal(end.getDate())} ${end.toLocaleString('en-US', { month: 'short' })} | ${start.getFullYear()}`;
+                }
+
+                return `${getOrdinal(start.getDate())} ${start.toLocaleString('en-US', { month: 'short' })} ${start.getFullYear()} - ${getOrdinal(end.getDate())} ${end.toLocaleString('en-US', { month: 'short' })} ${end.getFullYear()}`;
+            }
+
+            function formatReadableTime(date) {
+                return date.toLocaleTimeString('en-US', {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    hour12: true
+                });
+            }
+
+            function getOrdinal(n) {
+                const s = ["th", "st", "nd", "rd"],
+                    v = n % 100;
+                return n + (s[(v - 20) % 10] || s[v] || s[0]);
+            }
+
+            function initMiniSlider(cardElement) {
+                if (!cardElement) return;
+
+                const container = cardElement.querySelector('.mini-slider-container');
+                const track = cardElement.querySelector('.mini-slider-track');
+                const slides = cardElement.querySelectorAll('.mini-slide');
+                const prevBtn = cardElement.querySelector('.mini-slider-prev');
+                const nextBtn = cardElement.querySelector('.mini-slider-next');
+                const indicatorLine = cardElement.querySelector('.indicator-line');
+
+                if (!container || !track || slides.length === 0) return;
+
+                let currentSlide = 0;
+                const slideCount = slides.length;
+                const slideWidth = 100;
+
+                updateSliderPosition();
+
+                prevBtn.addEventListener('click', () => {
+                    currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                    updateSliderPosition();
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    currentSlide = (currentSlide + 1) % slideCount;
+                    updateSliderPosition();
+                });
+
+                function updateSliderPosition() {
+                    track.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+
+                    indicatorLine.style.width = `${100 / slideCount}%`;
+                    indicatorLine.style.transform = `translateX(${currentSlide * 100}%)`;
+
+                    prevBtn.disabled = currentSlide === 0;
+                    nextBtn.disabled = currentSlide === slideCount - 1;
+                }
+            }
+
+            // Initialize sliders
+            setupSlider('events', events);
+            setupSlider('projects', projects);
+
+            // Blog cards hover effect
+            const blogCards = document.querySelectorAll('.blog-x-card');
+            blogCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px)';
+                    card.style.boxShadow = '0 15px 30px rgba(0,0,0,0.1)';
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                    card.style.boxShadow = '';
+                });
+            });
+
+            // Popup Ad Functionality
+            const popupAdOverlay = document.getElementById('popupAdOverlay');
+            const popupAdCloseBtn = document.getElementById('popupAdClose');
+
+            // Show popup ad when page loads
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    popupAdOverlay.classList.add('active');
+                }, 500); // Show popup after 500ms delay
+            });
+
+            // Close popup when close button is clicked
+            popupAdCloseBtn.addEventListener('click', () => {
+                popupAdOverlay.classList.remove('active');
+            });
+
+            // Close popup when clicking outside the ad
+            popupAdOverlay.addEventListener('click', (e) => {
+                if (e.target === popupAdOverlay) {
+                    popupAdOverlay.classList.remove('active');
+                }
+            });
+
+            // Close popup with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && popupAdOverlay.classList.contains('active')) {
+                    popupAdOverlay.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+    <!-- Popup Ad -->
+    <div class="popup-ad-overlay" id="popupAdOverlay">
+        <div class="popup-ad-container">
+            <button class="popup-ad-close" id="popupAdClose" aria-label="Close ad">
+                <i class="fas fa-times"></i>
+            </button>
+            <img src="ad.jpeg" alt="Popup Advertisement" class="popup-ad-image">
+        </div>
+    </div>
+</body>
+</html>
