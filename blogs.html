@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Rotary Fellowship of Camping</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* All CSS variables and base styles from about.html */
+        :root {
+            --primary: #1a4f8c;
+            --primary-dark: #0d3a6b;
+            --primary-light: #2d6bb5;
+            --secondary: #e31b23;
+            --accent: #f9a825;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --medium-gray: #6c757d;
+            --dark-gray: #343a40;
+            --black: #212529;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
+            --shadow-primary: 0 4px 12px rgba(26, 79, 140, 0.3);
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 20px;
+            --radius-round: 50%;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --font-primary: 'Open Sans', sans-serif;
+            --h1: 2.5rem;
+            --h2: 2rem;
+            --h3: 1.75rem;
+            --h4: 1.5rem;
+            --h5: 1.25rem;
+            --h6: 1rem;
+            --base-font-size: 1rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            font-size: var(--base-font-size);
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            z-index: 10000;
+            transition: all var(--transition-medium);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-sm) 0;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: all var(--transition-medium);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            width: 50px;
+            height: 50px;
+            position: relative;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0;
+            transition: all var(--transition-medium);
+        }
+
+        .mobile-menu-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .mobile-menu-toggle .bar {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: var(--primary);
+            margin: 6px auto;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-radius: 2px;
+            position: relative;
+            left: 0;
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background-color: var(--secondary);
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background-color: var(--secondary);
+        }
+
+        .mobile-menu-toggle.active {
+            transform: rotate(90deg);
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin-right: var(--space-md);
+        }
+
+        .nav-list li {
+            position: relative;
+            margin-left: var(--space-md);
+        }
+
+        .nav-list a {
+            color: var(--dark-gray);
+            font-weight: 500;
+            padding: var(--space-xs) 0;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .nav-list a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width var(--transition-medium);
+        }
+
+        .nav-list a:hover:after,
+        .nav-list a.active:after {
+            width: 100%;
+        }
+
+        .nav-list a.active {
+            color: var(--primary);
+        }
+
+        .nav-cta .button {
+            padding: var(--space-xs) var(--space-md);
+            background-color: var(--secondary);
+            color: var(--white);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-medium);
+        }
+
+        .nav-cta .button:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1000px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .main-nav {
+                position: fixed;
+                display: none;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transform: translateX(100%);
+                transition: transform var(--transition-medium);
+                z-index: 1000;
+                padding: var(--space-xl);
+            }
+
+            .main-nav.active {
+                display: flex;
+                transform: translateX(0);
+            }
+
+            .nav-list {
+                flex-direction: column;
+                margin-right: 0;
+                margin-bottom: var(--space-lg);
+                text-align: center;
+            }
+
+            .nav-list li {
+                margin: var(--space-sm) 0;
+            }
+
+            .nav-list a {
+                font-size: var(--h5);
+            }
+        }
+
+        /* Page Loader */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid var(--white);
+            border-right: 4px solid var(--white);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader-text {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .loader-text span {
+            animation: fadeInOut 1.5s ease-in-out infinite;
+        }
+
+        .loader-text span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loader-text span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Hero Banner */
+        .mini-top-banner {
+            margin-top: 80px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .mini-top-banner img.banner-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            opacity: 100%;
+            transition: transform 0.05s ease-out;
+        }
+
+        .mini-top-banner .mtb-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 74, 135, 0.4), rgba(0, 74, 135, 0.6));
+            z-index: 2;
+            pointer-events: none;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mtb-hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+            z-index: 3;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s var(--transition-slow) forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .mtb-hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+            color: var(--primary-dark);
+        }
+
+        .mtb-hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 0;
+            opacity: 0.9;
+        }
+
+        .mtb-scroll-down {
+            cursor: pointer;
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: white;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .mtb-hero-content h1 {
+                font-size: 2.75rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mtb-hero-content h1 {
+                font-size: 2.25rem;
+            }
+            .mtb-hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .mini-top-banner {
+                height: 400px;
+            }
+            .mtb-hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: var(--space-xl) 0;
+        }
+
+        .section-title {
+            font-size: var(--h2);
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+
+        .text-lg {
+            font-size: var(--h5);
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            color: var(--medium-gray);
+        }
+
+        /* Blog Section */
+        .blog-section {
+            background-color: var(--white);
+        }
+
+        .blog-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: var(--space-lg);
+            gap: var(--space-sm);
+        }
+
+        .filter-button {
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-lg);
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            background: var(--primary-extra-light);
+            color: var(--primary-dark);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-medium);
+            cursor: pointer;
+        }
+
+        .filter-button:hover {
+            background: var(--primary-light);
+        }
+
+        .filter-button.active {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .blogs-search {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto var(--space-lg);
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 79, 140, 0.2);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 50px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-top-right-radius: var(--radius-md);
+            border-bottom-right-radius: var(--radius-md);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition-fast);
+        }
+
+        .search-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Featured Post */
+        .featured-post-container {
+            margin-bottom: var(--space-xl);
+        }
+
+        .featured-post {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-medium);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .featured-post:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .featured-image {
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-medium);
+        }
+
+        .featured-post:hover .featured-image img {
+            transform: scale(1.05);
+        }
+
+        .featured-content {
+            padding: var(--space-lg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-badge {
+            display: inline-block;
+            padding: var(--space-xs) var(--space-sm);
+            background: var(--accent);
+            color: var(--white);
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            align-self: flex-start;
+        }
+
+        .featured-title {
+            font-size: var(--h2);
+            color: var(--secondary);
+            margin-bottom: var(--space-md);
+            line-height: 1.3;
+        }
+
+        .featured-excerpt {
+            color: var(--medium-gray);
+            margin-bottom: var(--space-lg);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .featured-meta {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .featured-author {
+            display: flex;
+            align-items: center;
+            margin-right: var(--space-md);
+        }
+
+        .featured-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-round);
+            object-fit: cover;
+            margin-right: var(--space-sm);
+        }
+
+        .featured-author-name {
+            font-weight: 600;
+        }
+
+        .featured-date {
+            color: var(--medium-gray);
+            font-size: 0.95rem;
+        }
+
+        .read-time {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .read-time i {
+            margin-right: var(--space-xs);
+            color: var(--primary);
+        }
+
+        /* Blog Grid */
+        .blog-x-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .blog-x-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-medium);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-x-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .blog-x-image {
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-x-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-medium);
+        }
+
+        .blog-x-card:hover .blog-x-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-x-date {
+            position: absolute;
+            top: var(--space-sm);
+            left: var(--space-sm);
+            background: var(--primary);
+            color: var(--white);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .blog-x-content {
+            padding: var(--space-md);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-x-category {
+            display: inline-block;
+            padding: var(--space-xs) var(--space-sm);
+            background: var(--primary-extra-light);
+            color: var(--primary-dark);
+            border-radius: var(--radius-md);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            align-self: flex-start;
+        }
+
+        .blog-x-title {
+            font-size: var(--h4);
+            color: var(--secondary);
+            margin-bottom: var(--space-sm);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .blog-x-excerpt {
+            margin-bottom: var(--space-md);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .blog-x-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .blog-x-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-round);
+            object-fit: cover;
+            margin-right: var(--space-sm);
+        }
+
+        .author-name {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-xl);
+        }
+
+        .page-link {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-round);
+            background: var(--white);
+            color: var(--dark-gray);
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-medium);
+            border: 1px solid var(--light-gray);
+        }
+
+        .page-link:hover,
+        .page-link.active {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: var(--shadow-primary);
+            border-color: var(--primary);
+        }
+
+        .page-link.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: var(--light-gray);
+            color: var(--medium-gray);
+        }
+
+        /* No Results */
+        .no-results-message {
+            text-align: center;
+            padding: var(--space-xl);
+            color: var(--medium-gray);
+            display: none;
+        }
+
+        .no-results-message i {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+            color: var(--light-gray);
+        }
+
+        /* Photo Gallery Section */
+        .photo-gallery-section {
+            padding: var(--space-xl) 0;
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .gallery-title {
+            font-size: var(--h2);
+            color: var(--primary-dark);
+            margin-bottom: var(--space-sm);
+            font-weight: 700;
+        }
+
+        .gallery-subtitle {
+            font-size: var(--h5);
+            color: var(--medium-gray);
+            margin-bottom: var(--space-lg);
+        }
+
+        .gallery-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .gallery-link-card {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            background: var(--white);
+            color: var(--dark-gray);
+            text-decoration: none;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-medium);
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+        }
+
+        .gallery-link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 79, 140, 0.1) 0%, rgba(26, 79, 140, 0) 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .gallery-link-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-image-placeholder {
+            position: relative;
+            width: 100%;
+            height: 160px;
+            overflow: hidden;
+            background: var(--light-gray);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-medium);
+        }
+
+        .gallery-link-card:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        .gallery-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 79, 140, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition-medium);
+            z-index: 2;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        .gallery-link-card:hover .gallery-image-overlay {
+            opacity: 1;
+        }
+
+        .gallery-link-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-lg);
+            flex: 1;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .gallery-link-content h3 {
+            font-size: var(--h5);
+            margin-bottom: var(--space-xs);
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .gallery-link-content p {
+            font-size: 0.95rem;
+            margin-bottom: var(--space-md);
+            color: var(--medium-gray);
+        }
+
+        .gallery-link-arrow {
+            opacity: 0;
+            transform: translateX(-5px);
+            transition: all var(--transition-medium);
+            position: relative;
+            z-index: 1;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .gallery-link-card:hover .gallery-link-arrow {
+            opacity: 1;
+            transform: translateX(0);
+            color: var(--secondary);
+        }
+
+        /* Join CTA Section */
+        .join-cta-section {
+            padding: var(--space-xl) 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .join-cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .join-cta-content h2 {
+            color: var(--white);
+            margin-bottom: var(--space-md);
+        }
+
+        .join-cta-content p {
+            margin-bottom: var(--space-lg);
+            font-size: var(--h5);
+        }
+
+        .join-cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-medium);
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .button-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .button-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .button-outline {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .button-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .join-cta-buttons {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+            .featured-post {
+                grid-template-columns: 1fr;
+            }
+            .featured-image {
+                min-height: 300px;
+            }
+            .blog-x-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-links-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: var(--space-sm);
+            }
+            .gallery-link-card {
+                min-height: 240px;
+            }
+            .gallery-image-placeholder {
+                height: 120px;
+            }
+            .gallery-link-content {
+                padding: var(--space-md);
+            }
+        }
+
+        /* Footer */
+        .footer {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            opacity: 0.7;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            animation: scrollPattern 100s linear infinite;
+        }
+
+        @keyframes scrollPattern {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-50%);
+            }
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-brand {
+            text-align: center;
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+            display: inline-block;
+            text-decoration: none;
+            transition: all var(--transition-medium);
+        }
+
+        .footer-logo:hover {
+            color: var(--accent) !important;
+            transform: translateY(-3px);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-about {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all var(--transition-medium);
+        }
+
+        .social-link:hover {
+            background: var(--off-white);
+            color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-primary);
+            text-decoration: none;
+        }
+
+        .footer-links {
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .links-title {
+            color: white !important;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all var(--transition-fast);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width var(--transition-medium);
+        }
+
+        .footer-link:hover {
+            color: var(--accent) !important;
+            opacity: 0.9;
+            text-decoration: none;
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
+            background: var(--accent) !important;
+        }
+
+        .footer-link.active {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .footer-link.active::after {
+            background: var(--accent);
+            width: 100%;
+        }
+
+        .footer-bottom {
+            text-align: center;
+        }
+
+        .copyright {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        .designer {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 0;
+        }
+
+        .designer a {
+            color: white;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .designer a:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                padding: 4rem 0;
+            }
+            .footer-about {
+                font-size: 1rem;
+            }
+            .links-grid {
+                gap: 1rem 2rem;
+            }
+            .footer-link {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-logo {
+                font-size: 2rem;
+            }
+            .footer-social {
+                gap: 1rem;
+            }
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            .links-grid {
+                gap: 1rem;
+            }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: -50px;
+            right: var(--space-lg);
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-round);
+            cursor: pointer;
+            z-index: 99;
+            transition: all var(--transition-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-to-top.show {
+            bottom: var(--space-lg);
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <div class="loader-text">
+                <span>L</span><span>o</span><span>a</span><span>d</span><span>i</span><span>n</span><span>g</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html" aria-label="Rotary Fellowship of Camping">
+                        <img src="logo.png" alt="Rotary Fellowship of Camping Logo">
+                    </a>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="messages.html">Messages</a></li>
+                        <li><a href="blogs.html" class="active">Blogs</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+
+                    <div class="nav-cta">
+                        <a href="donate.html" class="button">Donate Now</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="mini-top-banner">
+        <img class="banner-bg" src="ban.jpg" alt="Banner Background">
+        <div class="mtb-hero-content">
+            <h1>Rotary Stories & Insights</h1>
+            <p>Discover the latest news, updates, and inspiring stories from our community</p>
+        </div>
+        <div class="mtb-overlay"></div>
+        <div class="mtb-scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section smooth-scroll-to-start-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Latest Articles</h2>
+                <p class="text-lg">Explore our collection of blog posts covering service projects, member stories, and leadership insights</p>
+            </div>
+
+            <div class="blogs-search">
+                <input type="text" placeholder="Search blogs..." class="search-input">
+                <span class="search-btn">
+                    <i class="fas fa-search"></i>
+                </span>
+            </div>
+
+            <div class="blog-filters">
+                <button class="filter-button active" data-category="all">All Posts</button>
+                <button class="filter-button" data-category="Service Projects">Service Projects</button>
+                <button class="filter-button" data-category="Leadership">Leadership</button>
+                <button class="filter-button" data-category="Member Stories">Member Stories</button>
+                <button class="filter-button" data-category="District News">District News</button>
+            </div>
+
+            <!-- Featured Post -->
+            <div class="featured-post-container">
+                <a href="blog-post-kwe.html" style="text-decoration: none;">
+                    <article class="featured-post">
+                        <div class="featured-image">
+                            <img src="fea.png" alt="Featured Blog Post">
+                        </div>
+                        <div class="featured-content">
+                            <span class="featured-badge">Featured Post</span>
+                            <h3 class="featured-title">Ntusa Okwebaza Kwange by Kyomuhendo Speace</h3>
+                            <p class="featured-excerpt">Nkweyanziza nnyo Eli ekitongole ekya Rotarian Camping olw'obuyambi bwe mwampa ku mwana wange Atuhairwe Edwin. Omwana wange namuzaala nga ayina ekituli ku mutima. Kino nakimanya nga wa myezi ena, nga maze okumutuusa eri specialist w'abaana, Dr. Kagwa, ayina edwaliro lye mu Kagadi...</p>
+                            <div class="featured-meta">
+                                <div class="featured-author">
+                                    <img src="ok.jpg" alt="Author" class="featured-avatar">
+                                    <div>
+                                        <div class="featured-author-name">Rtn. Emmanuel Oketch</div>
+                                        <div class="featured-date">April 15, 2025</div>
+                                    </div>
+                                </div>
+                                <div class="read-time">
+                                    <i class="fas fa-clock"></i> 8 min read
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="blog-x-grid">
+                <!-- Blog Post 1 -->
+                <a href="blog-post-leadership.html" style="text-decoration: none;">
+                    <article class="blog-x-card">
+                        <div class="blog-x-image">
+                            <img src="lead.jpg" alt="Blog Post">
+                            <div class="blog-x-date">
+                                <i class="fas fa-calendar-alt"></i> Apr 10, 2025
+                            </div>
+                        </div>
+                        <div class="blog-x-content">
+                            <span class="blog-x-category">Leadership</span>
+                            <h3 class="blog-x-title">Leadership Lessons From Our Camping️</h3>
+                            <p class="blog-x-excerpt">The Rotary Fellowship of Camping is about more than just pitching a tent; it’s a living laboratory for cultivating effective leadership. This photo, capturing a moment of well-deserved recognition by Rotary International, perfectly illustrates the core lessons we learn in the great outdoors.</p>
+                            <div class="blog-x-meta">
+                                <div class="blog-x-author">
+                                    <img src="Prossy.jpg" alt="Author" class="author-avatar">
+                                    <span class="author-name">Namatovu P.</span>
+                                </div>
+                                <div class="read-time">
+                                    <i class="fas fa-clock"></i> 5 min
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- Blog Post 2 -->
+                <a href="blog-post-ECG.html" style="text-decoration: none;">
+                    <article class="blog-x-card">
+                        <div class="blog-x-image">
+                            <img src="project1.png" alt="Blog Post">
+                            <div class="blog-x-date">
+                                <i class="fas fa-calendar-alt"></i> Mar 28, 2025
+                            </div>
+                        </div>
+                        <div class="blog-x-content">
+                            <span class="blog-x-category">Service Projects</span>
+                            <h3 class="blog-x-title">Donation of ECG machines</h3>
+                            <p class="blog-x-excerpt">We are incredibly proud to share this moment: the successful donation of 5 vital Electrocardiogram (ECG) machines to Uganda Heart Institute in Mulago, Jinja, Mbarara, Masaka Regional Referral Hospitals, and Busolwe General Hospital in Butaleja. These machines have been used to help over 10,000 patients. Additionally, 12 children have been supported for heart surgeries. This initiative was the primary focus of our recent major camping fundraiser, demonstrating that the funds raised around the campfire directly translate into life-saving equipment and healthcare for our communities.</p>
+                            <div class="blog-x-meta">
+                                <div class="blog-x-author">
+                                    <img src="Prossy.jpg" alt="Author" class="author-avatar">
+                                    <span class="author-name">Namatovu P.</span>
+                                </div>
+                                <div class="read-time">
+                                    <i class="fas fa-clock"></i> 6 min
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- Blog Post 3 -->
+                <a href="blog-post-mem.html" style="text-decoration: none;">
+                    <article class="blog-x-card">
+                        <div class="blog-x-image">
+                            <img src="IMG_0779.jpg" alt="Blog Post">
+                            <div class="blog-x-date">
+                                <i class="fas fa-calendar-alt"></i> Feb 15, 2025
+                            </div>
+                        </div>
+                        <div class="blog-x-content">
+                            <span class="blog-x-category">Member Stories</span>
+                            <h3 class="blog-x-title">Tent life is the best life! 🏕️</h3>
+                            <p class="blog-x-excerpt">The Rotary Fellowship of Camping brings great people together in the great outdoors. Who's joining the next trip.</p>
+                            <div class="blog-x-meta">
+                                <div class="blog-x-author">
+                                    <img src="Prossy.jpg" alt="Author" class="author-avatar">
+                                    <span class="author-name">Namatovu P.</span>
+                                </div>
+                                <div class="read-time">
+                                    <i class="fas fa-clock"></i> 7 min
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- Blog Post 4 
+                <a href="blog-post.html" style="text-decoration: none;">
+                    <article class="blog-x-card">
+                        <div class="blog-x-image">
+                            <img src="2428.png" alt="Blog Post">
+                            <div class="blog-x-date">
+                                <i class="fas fa-calendar-alt"></i> Jan 30, 2025
+                            </div>
+                        </div>
+                        <div class="blog-x-content">
+                            <span class="blog-x-category">International</span>
+                            <h3 class="blog-x-title">Building Bridges: Our Sister District Partnership</h3>
+                            <p class="blog-x-excerpt">Exploring the benefits of our international partnership with a Rotary district in Europe and the cultural exchange opportunities it creates.</p>
+                            <div class="blog-x-meta">
+                                <div class="blog-x-author">
+                                    <img src="female-1.png" alt="Author" class="author-avatar">
+                                    <span class="author-name">Sarah Johnson</span>
+                                </div>
+                                <div class="read-time">
+                                    <i class="fas fa-clock"></i> 5 min
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- Blog Post 5 
+                <a href="blog-post.html" style="text-decoration: none;">
+                    <article class="blog-x-card">
+                        <div class="blog-x-image">
+                            <img src="int.png" alt="Blog Post">
+                            <div class="blog-x-date">
+                                <i class="fas fa-calendar-alt"></i> Nov 22, 2024
+                            </div>
+                        </div>
+                        <div class="blog-x-content">
+                            <span class="blog-x-category">District News</span>
+                            <h3 class="blog-x-title">Welcoming Our Newest Club: Rotary Club of Mombasa</h3>
+                            <p class="blog-x-excerpt">Celebrating the chartering of our newest club and how it expands our district's reach and impact along uganda's beautiful coastline.</p>
+                            <div class="blog-x-meta">
+                                <div class="blog-x-author">
+                                    <img src="eddy.jpg" alt="Author" class="author-avatar">
+                                    <span class="author-name">Edgar G.</span>
+                                </div>
+                                <div class="read-time">
+                                    <i class="fas fa-clock"></i> 4 min
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a> -->
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results-message">
+                <div class="no-results-wrapper">
+                    <i class="fas fa-search fa-2x"></i>
+                    <p>No blog posts match your filters.</p>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#" class="page-link disabled">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+
+            <!-- Photo Gallery Links Section -->
+            <div class="photo-gallery-section">
+                <h2 class="gallery-title">View More Photos</h2>
+                <p class="gallery-subtitle">Explore our photo galleries to see more moments from our camping adventures</p>
+                <div class="gallery-links-grid">
+                    <a href="https://photos.app.goo.gl/B4EKH2EWswd2y8f19" target="_blank" rel="noopener" class="gallery-link-card">
+                        <div class="gallery-image-placeholder">
+                            <img src="ga1.jpg" alt="Gallery 1" class="gallery-image">
+                            <div class="gallery-image-overlay">
+                                <i class="fas fa-external-link-alt"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-link-content">
+                            <h3>Gallery 1</h3>
+                            <p>View photos</p>
+                            <span class="gallery-link-arrow"><i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="https://photos.app.goo.gl/mFmVNQmMAhcFfx9Z7" target="_blank" rel="noopener" class="gallery-link-card">
+                        <div class="gallery-image-placeholder">
+                            <img src="ga2.jpg" alt="Gallery 2" class="gallery-image">
+                            <div class="gallery-image-overlay">
+                                <i class="fas fa-external-link-alt"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-link-content">
+                            <h3>Gallery 2</h3>
+                            <p>View photos</p>
+                            <span class="gallery-link-arrow"><i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="https://photos.app.goo.gl/kw8eHnJEtPDPZJUB8" target="_blank" rel="noopener" class="gallery-link-card">
+                        <div class="gallery-image-placeholder">
+                            <img src="ga3.jpg" alt="Gallery 3" class="gallery-image">
+                            <div class="gallery-image-overlay">
+                                <i class="fas fa-external-link-alt"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-link-content">
+                            <h3>Gallery 3</h3>
+                            <p>View photos</p>
+                            <span class="gallery-link-arrow"><i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="https://photos.app.goo.gl/m1fWde4ioZyYehHu5" target="_blank" rel="noopener" class="gallery-link-card">
+                        <div class="gallery-image-placeholder">
+                            <img src="ga4.jpg" alt="Gallery 4" class="gallery-image">
+                            <div class="gallery-image-overlay">
+                                <i class="fas fa-external-link-alt"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-link-content">
+                            <h3>Gallery 4</h3>
+                            <p>View photos</p>
+                            <span class="gallery-link-arrow"><i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="https://photos.app.goo.gl/LVDSgxww9QZKiGFX7" target="_blank" rel="noopener" class="gallery-link-card">
+                        <div class="gallery-image-placeholder">
+                            <img src="ga5.jpg" alt="Gallery 5" class="gallery-image">
+                            <div class="gallery-image-overlay">
+                                <i class="fas fa-external-link-alt"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-link-content">
+                            <h3>Gallery 5</h3>
+                            <p>View photos</p>
+                            <span class="gallery-link-arrow"><i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="https://photos.app.goo.gl/NMPmCRhCuPyMnvTZ9" target="_blank" rel="noopener" class="gallery-link-card">
+                        <div class="gallery-image-placeholder">
+                            <img src="ga6.jpg" alt="Gallery 6" class="gallery-image">
+                            <div class="gallery-image-overlay">
+                                <i class="fas fa-external-link-alt"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-link-content">
+                            <h3>Gallery 6</h3>
+                            <p>View photos</p>
+                            <span class="gallery-link-arrow"><i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="https://photos.app.goo.gl/Qx3aRhXEXW1LybBB9" target="_blank" rel="noopener" class="gallery-link-card">
+                        <div class="gallery-image-placeholder">
+                            <img src="ga7.jpg" alt="Gallery 7" class="gallery-image">
+                            <div class="gallery-image-overlay">
+                                <i class="fas fa-external-link-alt"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-link-content">
+                            <h3>Gallery 7</h3>
+                            <p>View photos</p>
+                            <span class="gallery-link-arrow"><i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="https://photos.app.goo.gl/FnDaLsEKenPwaJRr6" target="_blank" rel="noopener" class="gallery-link-card">
+                        <div class="gallery-image-placeholder">
+                            <img src="ga8.jpg" alt="Gallery 8" class="gallery-image">
+                            <div class="gallery-image-overlay">
+                                <i class="fas fa-external-link-alt"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-link-content">
+                            <h3>Gallery 8</h3>
+                            <p>View photos</p>
+                            <span class="gallery-link-arrow"><i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join CTA Section -->
+    <section class="join-cta-section">
+        <div class="container">
+            <div class="join-cta-content">
+                <h2>Want to Share Your Story?</h2>
+                <p>Join our community of writers and share your Rotary experiences with the world</p>
+                <div class="join-cta-buttons">
+                    <a href="contact-us.html" class="button button-primary">
+                        Write for Us
+                    </a>
+                    <a href="contact-us.html" class="button button-outline">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">Rotary Fellowship of Camping</a>
+                <p class="footer-about">
+                    Rotary Fellowship of Camping is a group of friends, Rotarians and family that share a common passion of Camping and fun. It is built on a promise of making new friends, bonding and network through fun around the world but most importantly explore a hobby of Camping while serving the communities around the world.
+                </p>
+
+                <div class="footer-social">
+                    <a href="https://www.tiktok.com/@rotary.camping.ug?_t=ZM-90xGYxHomuS&_r=1" class="social-link" aria-label="tiktok" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.instagram.com/rotary_camping_ug?igsh=MXNtMnFkempmbWRsNQ%3D%3D&utm_source=qr" class="social-link" aria-label="instagram" target="_blank" rel="noopener">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/rotarycamps?t=OSZ0Hr019cbHH3SxdEqxLQ&s=09" class="social-link" aria-label="x" target="_blank" rel="noopener">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3 class="links-title">Quick Links</h3>
+                <div class="links-grid">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="projects.html" class="footer-link">Projects</a>
+                    <a href="messages.html" class="footer-link">Messages</a>
+                    <a href="blogs.html" class="footer-link active">Blogs</a>
+                    <a href="contact-us.html" class="footer-link">Get Involved</a>
+                    <a href="contact-us.html" class="footer-link">Contact Us</a>
+                    <a href="donate.html" class="footer-link">Donate Now</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2025 Rotary Fellowship of Camping. All Rights Reserved.</p>
+                <p class="designer">❤️Designed by <a href="https://grecotechgraphix.com/" target="_blank" rel="noopener">Grecotech&graphix</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Page Loader - Show loader on page load and hide when all resources are loaded
+            const pageLoader = document.getElementById('pageLoader');
+            
+            function hideLoader() {
+                if (pageLoader) {
+                    pageLoader.classList.add('hidden');
+                    setTimeout(() => {
+                        pageLoader.style.display = 'none';
+                    }, 500);
+                }
+            }
+
+            // Hide loader when all images and resources are loaded
+            window.addEventListener('load', hideLoader);
+            
+            // Also hide loader after 2 seconds as a fallback
+            setTimeout(hideLoader, 2000);
+
+            // Mobile menu toggle
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+
+            mobileMenuToggle.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                mainNav.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+
+            // Blog filtering
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const blogCards = document.querySelectorAll('.blog-x-card');
+            const featuredPost = document.querySelector('.featured-post-container');
+            const noResultsMessage = document.querySelector('.no-results-message');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    let visibleCards = 0;
+                    
+                    blogCards.forEach(card => {
+                        const cardCategory = card.querySelector('.blog-x-category').textContent;
+                        
+                        if (category === 'all' || cardCategory === category) {
+                            card.style.display = 'flex';
+                            visibleCards++;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    // Show/hide featured post based on category
+                    if (category === 'all') {
+                        featuredPost.style.display = 'block';
+                    } else {
+                        featuredPost.style.display = 'none';
+                    }
+                    
+                    // Show no results message if no cards are visible
+                    if (visibleCards === 0 && category !== 'all') {
+                        noResultsMessage.style.display = 'block';
+                    } else {
+                        noResultsMessage.style.display = 'none';
+                    }
+                });
+            });
+
+            // Blog search
+            const searchInput = document.querySelector('.search-input');
+            const searchBtn = document.querySelector('.search-btn');
+            
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase();
+                let visibleCards = 0;
+                
+                blogCards.forEach(card => {
+                    const title = card.querySelector('.blog-x-title').textContent.toLowerCase();
+                    const excerpt = card.querySelector('.blog-x-excerpt').textContent.toLowerCase();
+                    const author = card.querySelector('.author-name').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || excerpt.includes(searchTerm) || author.includes(searchTerm)) {
+                        card.style.display = 'flex';
+                        visibleCards++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Hide featured post when searching
+                if (searchTerm) {
+                    featuredPost.style.display = 'none';
+                } else {
+                    featuredPost.style.display = 'block';
+                }
+                
+                // Show no results message if no cards are visible
+                if (visibleCards === 0 && searchTerm) {
+                    noResultsMessage.style.display = 'block';
+                } else {
+                    noResultsMessage.style.display = 'none';
+                }
+            }
+            
+            searchInput.addEventListener('input', performSearch);
+            searchBtn.addEventListener('click', performSearch);
+
+            // Pagination
+            const pageLinks = document.querySelectorAll('.page-link');
+            
+            pageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    if (!this.classList.contains('disabled') && !this.classList.contains('active')) {
+                        pageLinks.forEach(l => l.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // In a real implementation, this would load the appropriate page content
+                        console.log('Navigating to page:', this.textContent.trim());
+                    }
+                });
+            });
+
+            // Scroll down button
+            const scrollDown = document.querySelector('.mtb-scroll-down');
+            if (scrollDown) {
+                scrollDown.addEventListener('click', function() {
+                    const startSection = document.querySelector('.smooth-scroll-to-start-section');
+                    if (startSection) {
+                        window.scrollTo({
+                            top: startSection.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Parallax effect
+            const bgImage = document.querySelector('.mini-top-banner img.banner-bg');
+            function updateParallax() {
+                const scrollY = window.scrollY;
+                if (bgImage) {
+                    const offset = scrollY * 0.5;
+                    bgImage.style.transform = `translateY(${offset}px)`;
+                }
+            }
+            window.addEventListener('scroll', updateParallax);
+
+            // Animate blog cards on scroll
+            const blogCardElements = document.querySelectorAll('.blog-x-card, .featured-post');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            blogCardElements.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

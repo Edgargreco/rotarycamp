@@ -1,0 +1,2350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Rotary Fellowship of Camping</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4f8c;
+            --primary-dark: #0d3a6b;
+            --primary-light: #2d6bb5;
+            --secondary: #e31b23;
+            --accent: #f9a825;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --medium-gray: #6c757d;
+            --dark-gray: #343a40;
+            --black: #212529;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
+            --shadow-primary: 0 4px 12px rgba(26, 79, 140, 0.3);
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 20px;
+            --radius-round: 50%;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --font-primary: 'Open Sans', sans-serif;
+            --h1: 2.5rem;
+            --h2: 2rem;
+            --h3: 1.75rem;
+            --h4: 1.5rem;
+            --h5: 1.25rem;
+            --h6: 1rem;
+            --base-font-size: 1rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            font-size: var(--base-font-size);
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            z-index: 10000;
+            transition: all var(--transition-medium);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-sm) 0;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: all var(--transition-medium);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            width: 50px;
+            height: 50px;
+            position: relative;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0;
+            transition: all var(--transition-medium);
+        }
+
+        .mobile-menu-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .mobile-menu-toggle .bar {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: var(--primary);
+            margin: 6px auto;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-radius: 2px;
+            position: relative;
+            left: 0;
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background-color: var(--secondary);
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background-color: var(--secondary);
+        }
+
+        .mobile-menu-toggle.active {
+            transform: rotate(90deg);
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin-right: var(--space-md);
+        }
+
+        .nav-list li {
+            position: relative;
+            margin-left: var(--space-md);
+        }
+
+        .nav-list a {
+            color: var(--dark-gray);
+            font-weight: 500;
+            padding: var(--space-xs) 0;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .nav-list a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width var(--transition-medium);
+        }
+
+        .nav-list a:hover:after,
+        .nav-list a.active:after {
+            width: 100%;
+        }
+
+        .nav-list a.active {
+            color: var(--primary);
+        }
+
+        .nav-cta .button {
+            padding: var(--space-xs) var(--space-md);
+            background-color: var(--secondary);
+            color: var(--white);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-medium);
+        }
+
+        .nav-cta .button:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1000px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .main-nav {
+                position: fixed;
+                display: none;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transform: translateX(100%);
+                transition: transform var(--transition-medium);
+                z-index: 1000;
+                padding: var(--space-xl);
+            }
+
+            .main-nav.active {
+                display: flex;
+                transform: translateX(0);
+            }
+
+            .nav-list {
+                flex-direction: column;
+                margin-right: 0;
+                margin-bottom: var(--space-lg);
+                text-align: center;
+            }
+
+            .nav-list li {
+                margin: var(--space-sm) 0;
+            }
+
+            .nav-list a {
+                font-size: var(--h5);
+            }
+        }
+
+        /* Page Loader */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid var(--white);
+            border-right: 4px solid var(--white);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader-text {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .loader-text span {
+            animation: fadeInOut 1.5s ease-in-out infinite;
+        }
+
+        .loader-text span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loader-text span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Hero Banner */
+        .mini-top-banner {
+            margin-top: 80px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .mini-top-banner img.banner-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            opacity: 100%;
+            transition: transform 0.05s ease-out;
+        }
+
+        .mini-top-banner .mtb-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 74, 135, 0.4), rgba(0, 74, 135, 0.6));
+            z-index: 2;
+            pointer-events: none;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mtb-hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+            z-index: 3;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s var(--transition-slow) forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .mtb-hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+            color: var(--primary-dark);
+        }
+
+        .mtb-hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 0;
+            opacity: 0.9;
+        }
+
+        .mtb-scroll-down {
+            cursor: pointer;
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: white;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .mtb-hero-content h1 {
+                font-size: 2.75rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mtb-hero-content h1 {
+                font-size: 2.25rem;
+            }
+            .mtb-hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .mini-top-banner {
+                height: 400px;
+            }
+            .mtb-hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: var(--space-xl) 0;
+        }
+
+        .section-title {
+            font-size: var(--h2);
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+
+        .text-lg {
+            font-size: var(--h5);
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            color: var(--medium-gray);
+        }
+
+        /* Vision & Mission Section */
+        .vm-section {
+            background-color: var(--white);
+        }
+
+        .vm-cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .vm-card {
+            width: 100%;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .vm-card.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .vm-card.vision-card {
+            transition-delay: 0.1s;
+            border-top: 4px solid var(--primary);
+        }
+
+        .vm-card.mission-card {
+            transition-delay: 0.3s;
+            border-top: 4px solid var(--accent);
+        }
+
+        .vm-card.values-card {
+            transition-delay: 0.5s;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .vm-icon-container {
+            width: 80px;
+            background-color: var(--off-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .vm-icon-wrapper {
+            width: 30px;
+            height: 30px;
+            border-radius: var(--radius-round);
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            transition: all 0.5s ease;
+        }
+
+        .vm-card:hover .vm-icon-wrapper {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .vm-icon {
+            font-size: 1rem;
+            color: var(--primary);
+            transition: all 0.5s ease;
+        }
+
+        .mission-card .vm-icon {
+            color: var(--accent);
+        }
+
+        .values-card .vm-icon {
+            color: var(--secondary);
+        }
+
+        .vm-content {
+            flex: 1;
+            padding: var(--space-lg);
+            position: relative;
+            z-index: 2;
+        }
+
+        .vm-title {
+            font-size: var(--h4);
+            color: var(--secondary);
+            margin-bottom: var(--space-md);
+            position: relative;
+            display: inline-block;
+        }
+
+        .vm-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .mission-card .vm-title::after {
+            background: var(--accent);
+        }
+
+        .values-card .vm-title::after {
+            background: var(--secondary);
+        }
+
+        .vm-description {
+            color: var(--dark-gray);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .vm-description p {
+            margin-bottom: var(--space-sm);
+        }
+
+        .vm-description ul {
+            margin-left: var(--space-md);
+            margin-bottom: 0;
+            margin-top: 1.5rem;
+        }
+
+        .vm-description li {
+            margin-bottom: var(--space-sm);
+            position: relative;
+        }
+
+        .vm-description li::before {
+            content: '•';
+            color: var(--primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .mission-card .vm-description li::before {
+            color: var(--accent);
+        }
+
+        /* Values Grid */
+        .values-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .value-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            background: var(--off-white);
+            transition: all var(--transition-medium);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .value-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-sm);
+            background: var(--white);
+        }
+
+        .value-icon-container {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            background: var(--white);
+            border-radius: var(--radius-round);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-sm);
+            color: var(--secondary);
+            font-size: 1.25rem;
+        }
+
+        .value-content {
+            flex: 1;
+            width: 100%;
+        }
+
+        .value-title {
+            color: var(--secondary);
+            margin-bottom: var(--space-xs);
+            font-size: 1.1rem;
+        }
+
+        .value-point {
+            color: var(--dark-gray);
+            line-height: 1.6;
+            position: relative;
+            padding-left: var(--space-sm);
+            margin-bottom: var(--space-xs);
+        }
+
+        .value-point::before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+
+        .value-item:nth-child(1) {
+            border-left-color: var(--primary);
+        }
+
+        .value-item:nth-child(1) .value-icon-container {
+            color: var(--primary);
+        }
+
+        .value-item:nth-child(2) {
+            border-left-color: var(--accent);
+        }
+
+        .value-item:nth-child(2) .value-icon-container {
+            color: var(--accent);
+        }
+
+        .value-item:nth-child(3) {
+            border-left-color: #6f42c1;
+        }
+
+        .value-item:nth-child(3) .value-icon-container {
+            color: #6f42c1;
+        }
+
+        .value-item:nth-child(4) {
+            border-left-color: #20c997;
+        }
+
+        .value-item:nth-child(4) .value-icon-container {
+            color: #20c997;
+        }
+
+        .value-item:nth-child(5) {
+            border-left-color: #fd7e14;
+        }
+
+        .value-item:nth-child(5) .value-icon-container {
+            color: #fd7e14;
+        }
+
+        @media (max-width: 768px) {
+            .value-item {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+            .value-icon-container {
+                align-self: center;
+            }
+            .value-content {
+                text-align: center;
+            }
+            .value-point {
+                padding-left: 0;
+                text-align: center;
+            }
+            .value-point::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .vm-icon-container {
+                width: 100px;
+            }
+            .vm-icon-wrapper {
+                width: 40px;
+                height: 40px;
+            }
+            .vm-icon {
+                font-size: 1rem;
+            }
+            .vm-content {
+                padding: var(--space-md);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .vm-card {
+                flex-direction: column;
+            }
+            .vm-icon-container {
+                width: 100%;
+                padding: var(--space-md) 0;
+            }
+            .vm-icon-wrapper {
+                margin: 0 auto;
+            }
+        }
+
+        /* Leadership Section */
+        .leadership-section {
+            background-color: var(--off-white);
+        }
+
+        .leadership-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: var(--space-lg);
+            gap: var(--space-sm);
+        }
+
+        .tab-button {
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-lg);
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            background: var(--primary-extra-light);
+            color: var(--primary-dark);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-medium);
+            cursor: pointer;
+        }
+
+        .tab-button:hover {
+            background: var(--primary-light);
+        }
+
+        .tab-button.active {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .type-grid {
+            display: none !important;
+        }
+
+        .type-grid.active {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-md);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .leader-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-medium);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .leader-image {
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .leader-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-medium);
+        }
+
+        .leader-card:hover .leader-image img {
+            transform: scale(1.05);
+        }
+
+        .leader-content {
+            padding: var(--space-md);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .leader-name {
+            font-size: var(--h4);
+            color: var(--secondary);
+            margin-bottom: var(--space-xs);
+            font-weight: 600;
+            line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .leader-position {
+            font-size: var(--h6);
+            color: var(--primary);
+            margin-bottom: var(--space-md);
+            font-weight: 500;
+            line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .leader-bio {
+            margin-bottom: 0;
+            color: var(--medium-gray);
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .leader-phone {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .leader-location {
+            font-size: 0.85rem;
+            color: var(--medium-gray);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background: linear-gradient(135deg, var(--primary-extra-light) 0%, var(--off-white) 100%);
+        }
+
+        .timeline {
+            position: relative;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 100%;
+            width: 4px;
+            background-color: var(--secondary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: var(--space-xl);
+            width: 50%;
+            padding: 0 var(--space-lg);
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            transform: translateX(20px);
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item:nth-child(even).visible {
+            transform: translateX(0);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            border: 4px solid var(--secondary);
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+
+        .timeline-content {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-medium);
+        }
+
+        .timeline-item:hover .timeline-content {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .timeline-item:nth-child(even):hover .timeline-content {
+            transform: translateX(-5px);
+        }
+
+        .timeline-year {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .timeline-title {
+            font-size: var(--h5);
+            color: var(--secondary);
+            margin-bottom: var(--space-sm);
+        }
+
+        /* Join CTA Section */
+        .join-cta-section {
+            padding: var(--space-xl) 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .join-cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .join-cta-content h2 {
+            color: var(--white);
+            margin-bottom: var(--space-md);
+        }
+
+        .join-cta-content p {
+            margin-bottom: var(--space-lg);
+            font-size: var(--h5);
+        }
+
+        .join-cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-medium);
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .button-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .button-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .button-outline {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .button-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .join-cta-buttons {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 0;
+            }
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 10px;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            opacity: 0.7;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            animation: scrollPattern 100s linear infinite;
+        }
+
+        @keyframes scrollPattern {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-50%);
+            }
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-brand {
+            text-align: center;
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+            display: inline-block;
+            text-decoration: none;
+            transition: all var(--transition-medium);
+        }
+
+        .footer-logo:hover {
+            color: var(--accent) !important;
+            transform: translateY(-3px);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-about {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all var(--transition-medium);
+        }
+
+        .social-link:hover {
+            background: var(--off-white);
+            color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-primary);
+            text-decoration: none;
+        }
+
+        .footer-links {
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .links-title {
+            color: white !important;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all var(--transition-fast);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width var(--transition-medium);
+        }
+
+        .footer-link:hover {
+            color: var(--accent) !important;
+            opacity: 0.9;
+            text-decoration: none;
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
+            background: var(--accent) !important;
+        }
+
+        .footer-link.active {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .footer-link.active::after {
+            background: var(--accent);
+            width: 100%;
+        }
+
+        .footer-bottom {
+            text-align: center;
+        }
+
+        .copyright {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        .designer {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 0;
+        }
+
+        .designer a {
+            color: white;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .designer a:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                padding: 4rem 0;
+            }
+            .footer-about {
+                font-size: 1rem;
+            }
+            .links-grid {
+                gap: 1rem 2rem;
+            }
+            .footer-link {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-logo {
+                font-size: 2rem;
+            }
+            .footer-social {
+                gap: 1rem;
+            }
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            .links-grid {
+                gap: 1rem;
+            }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: -50px;
+            right: var(--space-lg);
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-round);
+            cursor: pointer;
+            z-index: 99;
+            transition: all var(--transition-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-to-top.show {
+            bottom: var(--space-lg);
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+		/* Leadership Highlight Section */
+.drr-highlight {
+    padding: var(--space-xl) 0;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    color: var(--white);
+}
+
+.drr-slider-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.drr-header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+.drr-header h2 {
+    font-size: var(--h2);
+    color: var(--white);
+    margin-bottom: var(--space-xs);
+}
+
+.drr-content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.drr-portrait {
+    flex: 0 0 300px;
+    position: relative;
+}
+
+.portrait-master {
+    position: relative;
+    transition: all var(--transition-medium);
+}
+
+.portrait-master:hover {
+    transform: translateY(-5px);
+}
+
+.portrait-frame {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.portrait-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-medium);
+}
+
+.portrait-master:hover .portrait-image {
+    transform: scale(1.05);
+}
+
+.portrait-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 100%);
+    pointer-events: none;
+}
+
+.drr-footer {
+    margin-top: var(--space-md);
+    text-align: center;
+}
+
+.drr-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--white);
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    transition: all var(--transition-medium);
+    box-shadow: var(--shadow-sm);
+}
+
+.drr-cta:hover {
+    background: var(--accent);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.drr-message-container {
+    flex: 1;
+    min-width: 300px;
+}
+
+.drr-year {
+    font-size: var(--h5);
+    color: var(--accent);
+    margin-bottom: var(--space-md);
+    text-align: center;
+    font-weight: 600;
+}
+
+.message-slider {
+    position: relative;
+}
+
+.message {
+    display: none;
+}
+
+.message.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.drr-quote {
+    background: rgba(255, 255, 255, 0.1);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--accent);
+    position: relative;
+}
+
+.drr-quote p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+    font-style: italic;
+}
+
+.drr-quote h6 {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* Alternative layout with image on the right */
+.drr-highlight.right-image .drr-content-wrapper {
+    flex-direction: row-reverse;
+}
+
+.drr-highlight.right-image .drr-quote {
+    border-left: none;
+    border-right: 4px solid var(--accent);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .drr-content-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .drr-portrait {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .portrait-image {
+        height: 350px;
+    }
+    
+    .drr-message-container {
+        min-width: auto;
+    }
+    
+    .drr-highlight.right-image .drr-content-wrapper {
+        flex-direction: column;
+    }
+    
+    .drr-highlight.right-image .drr-quote {
+        border-right: none;
+        border-left: 4px solid var(--accent);
+    }
+}
+
+@media (max-width: 480px) {
+    .drr-quote {
+        padding: var(--space-md);
+    }
+    
+    .drr-quote p {
+        font-size: 1rem;
+    }
+    
+    .portrait-image {
+        height: 300px;
+    }
+}
+
+/* Additional styling for better visual hierarchy */
+.drr-highlight .container {
+    position: relative;
+    z-index: 2;
+}
+
+.drr-highlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+    opacity: 0.3;
+    pointer-events: none;
+}
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <div class="loader-text">
+                <span>L</span><span>o</span><span>a</span><span>d</span><span>i</span><span>n</span><span>g</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html" aria-label="Rotary Fellowship of Camping">
+                        <img src="logo.png" alt="Rotary Fellowship of Camping Logo">
+                    </a>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html" class="active">About Us</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="messages.html">Messages</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+
+                    <div class="nav-cta">
+                        <a href="donate.html" class="button">Donate Now</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="mini-top-banner">
+        <img class="banner-bg" src="ban.jpg" alt="Banner Background">
+        <div class="mtb-hero-content">
+            <h1>About Rotary Fellowship of Camping</h1>
+            <p>People of Action creating positive change in our communities since 1995</p>
+        </div>
+        <div class="mtb-overlay"></div>
+        <div class="mtb-scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Vision & Mission Section -->
+    <section class="vm-section smooth-scroll-to-start-section">
+        <div class="container">
+            <div class="vm-header">
+                <h2 class="section-title">Our Vision & Mission</h2>
+                <p class="text-lg">The foundation of everything we do</p>
+            </div>
+
+            <div class="vm-cards-container">
+                <div>
+                    <h5 class="vm-title">Our Vision</h5>
+                </div>
+
+                <div class="vm-card vision-card">
+                    <div class="vm-icon-container">
+                        <div class="vm-icon-wrapper">
+                            <i class="fas fa-eye vm-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="vm-content">
+                        <div class="vm-description">
+                            <p>Together, we see a world where people unite and take action to create lasting change — across the globe, in our communities, and in ourselves.</p>
+                            <p>Solving real problems takes real commitment and vision. For more than 50 years, Rotary's people of action have used their passion, energy, and intelligence to take action on sustainable projects. From literacy and peace to water and health, we are always working to better our world, and we stay committed to the end.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="vm-title">Our Mission</h5>
+                </div>
+
+                <div class="vm-card mission-card">
+                    <div class="vm-content">
+                        <div class="vm-description">
+                            <p>We provide service to others, promote integrity, and advance world understanding, goodwill, and peace through our fellowship of business, professional, and community leaders. Rotary members believe that we have a shared responsibility to take action on our world's most persistent issues. Our clubs work together to:</p>
+                            <ul>
+                                <li>Promote peace</li>
+                                <li>Fight disease</li>
+                                <li>Provide clean water, sanitation, and hygiene</li>
+                                <li>Save mothers and children</li>
+                                <li>Support education</li>
+                                <li>Grow local economies</li>
+                                <li>Protect the environment</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="vm-icon-container">
+                        <div class="vm-icon-wrapper">
+                            <i class="fas fa-bullseye vm-icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="vm-title">Our Core Values</h5>
+                </div>
+
+                <div class="vm-card values-card">
+                    <div class="vm-icon-container">
+                        <div class="vm-icon-wrapper">
+                            <i class="fas fa-heart vm-icon"></i>
+                        </div>
+                    </div>
+                    <div class="vm-content">
+                        <div class="vm-description">
+                            <div class="values-list">
+                                <div class="value-item">
+                                    <div class="value-icon-container">
+                                        <i class="fas fa-hands-helping value-icon"></i>
+                                    </div>
+                                    <div class="value-content">
+                                        <h4 class="value-title">Service</h4>
+                                        <p class="value-point">Rotary members believe that service activities and programs promote understanding and peace. Service is a major element of our mission, and we strive to create a culture of service within our organization that provides satisfaction for those who serve.</p>
+                                    </div>
+                                </div>
+                                <div class="value-item">
+                                    <div class="value-icon-container">
+                                        <i class="fas fa-users value-icon"></i>
+                                    </div>
+                                    <div class="value-content">
+                                        <h4 class="value-title">Fellowship</h4>
+                                        <p class="value-point">Rotary emphasizes the power of combined efforts to serve humanity. We believe that united efforts multiply resources and broaden perspectives.</p>
+                                    </div>
+                                </div>
+                                <div class="value-item">
+                                    <div class="value-icon-container">
+                                        <i class="fas fa-puzzle-piece value-icon"></i>
+                                    </div>
+                                    <div class="value-content">
+                                        <h4 class="value-title">Diversity</h4>
+                                        <p class="value-point">Rotary encourages a diverse community of members from various backgrounds and encourages diversity in our activities and service work.</p>
+                                    </div>
+                                </div>
+                                <div class="value-item">
+                                    <div class="value-icon-container">
+                                        <i class="fas fa-handshake value-icon"></i>
+                                    </div>
+                                    <div class="value-content">
+                                        <h4 class="value-title">Integrity</h4>
+                                        <p class="value-point">Rotary is committed to accountability, honesty, and good ethics in all our endeavors.</p>
+                                    </div>
+                                </div>
+                                <div class="value-item">
+                                    <div class="value-icon-container">
+                                        <i class="fas fa-graduation-cap value-icon"></i>
+                                    </div>
+                                    <div class="value-content">
+                                        <h4 class="value-title">Leadership</h4>
+                                        <p class="value-point">Rotary recognizes the importance of leadership development and encourages leadership skills among its members.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Highlight -->
+    <section class="drr-highlight primary-drr" aria-labelledby="drr-title">
+        <div class="container">
+            <div class="drr-slider-container">
+                <div class="drr-header">
+                    <h2 id="drr-title">Rtn. Irene Nakanwagi</h2>
+                </div>
+
+                <div class="drr-content-wrapper">
+                    <div class="drr-portrait">
+                        <div class="portrait-master" data-drr-code="2025-2026">
+                            <div class="portrait-frame">
+                                <img src="IMG_9825.jpg" alt="Irene Nakanwagi Portrait" class="portrait-image">
+                                <div class="portrait-overlay"></div>
+                            </div>
+                            <div class="drr-footer">
+                                <a href="drr.html" class="drr-cta">
+                                    <span>Get to Know Irene</span>
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="drr-message-container">
+                        <h5 class="drr-year">Executive Director</h5>
+                        <div class="message-slider">
+                            <div class="message active">
+                                <blockquote class="drr-quote">
+                                    <p>Irene brings a fresh perspective and dynamic energy to her role as Executive Director. With a background in community development, she has successfully implemented several youth-led initiatives. Her vision focuses on digital transformation of Rotary operations and creating more opportunities for cross-border collaboration. "The future of Rotary lies in our ability to adapt while staying true to our core values. I'm excited to work with members across the district to build a more connected and impactful Rotary experience."</p>
+                                    <h6 style="text-align: right;">2025/2026</h6>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Structure -->
+    <section class="leadership-section">
+        <div class="container">
+            <div class="leadership-header">
+                <h2 class="section-title">The Leadership Structure</h2>
+                <p class="text-lg">Meet the team guiding Rotary Fellowship of Camping</p>
+            </div>
+
+            <div class="leadership-tabs">
+                <button class="tab-button active" data-type="EXECUTIVE">
+                    Executive Team
+                </button>
+                <button class="tab-button" data-type="COMMITTEES">
+                    Committee 
+                </button>
+                <button class="tab-button" data-type="PAST">
+                    Past Leaders
+                </button>
+            </div>
+            
+            <div class="leadership-grid type-grid active" data-type="EXECUTIVE">
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="IMG_9825.jpg" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Irene Nakanwagi</div>
+                        <div class="leader-position">Executive Director</div>
+                         <div class="leader-phone">📞0772 978 484</div>
+                        <div class="leader-location">📍Nsangi</div>
+                        <div class="leader-bio">Visionary leader with a passion for community development and youth empowerment.</div>
+                    </div>
+                </div>
+                 <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="JaliaExeSec.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Jalia Kiganda</div>
+                        <div class="leader-position">Club President 2025-26</div>
+                        <div class="leader-phone">📞0786 051 110</div>
+                        <div class="leader-location">📍Jinja</div>
+                        <div class="leader-bio">Ensuring smooth operations and effective communication within the club.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="vice.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Patrick Rujumba</div>
+                        <div class="leader-position">Vice President 2025-26</div>
+                        <div class="leader-phone">📞0772 435 725</div>
+                        <div class="leader-location">📍Jinja</div>
+                        <div class="leader-bio">Dedicated to service and creating meaningful impact in our community.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="bilsec.jpg" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Nakayiizi Bilhal</div>
+                        <div class="leader-position">Sectretary 2025-26</div>
+                         <div class="leader-phone">📞0706 444 164</div>
+                        <div class="leader-location">📍Nsangi</div>
+                        <div class="leader-bio">Managing club secretariat duties with integrity and transparency.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="ElsieTreasurer.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Elsie Nanfuka</div>
+                        <div class="leader-position">Treasurer 2025-26</div>
+                         <div class="leader-phone">📞0706 518 154</div>
+                        <div class="leader-location">📍Nsangi</div>
+                        <div class="leader-bio">Managing club finances with integrity and transparency.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="leadership-grid type-grid" data-type="COMMITTEES">
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="LakerChairM&E.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Laker Harriet</div>
+                        <div class="leader-position">M & E Chair</div>
+                        <div class="leader-phone">📞 0773 761 121</div>
+                        <div class="leader-location">📍 Gulu</div>
+                        <div class="leader-bio">Leading impactful community service initiatives that address local needs.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="Prossy.jpg" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Namatovu Prossy Lukwago</div>
+                        <div class="leader-position">Public Relations Chair</div>
+                        <div class="leader-phone">📞 0751 809 925</div>
+                        <div class="leader-location">📍 Rubaga Lake View</div>
+                        <div class="leader-bio">Growing our club with passionate members committed to service.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="MartinChairMem.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Martin Kigozi</div>
+                        <div class="leader-position">Membership Chair</div>
+                        <div class="leader-phone">📞 0782 829 589</div>
+                        <div class="leader-location">📍 Arua</div>
+                        <div class="leader-bio">Sharing our story and impact with the wider community.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="EnidViceChairM&E.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Enid Asingwire</div>
+                        <div class="leader-position">Vice M&E</div>
+                        <div class="leader-phone">📞 0701 406 531</div>
+                        <div class="leader-location">📍 Kajjansi</div>
+                        <div class="leader-bio">Supporting monitoring and evaluation efforts to ensure program effectiveness.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                <div class="leader-image">
+                        <img src="ok.jpg" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Emmanuel Oketch</div>
+                        <div class="leader-position">Vice Public Relations</div>
+                        <div class="leader-phone">📞 0782 722 789</div>
+                        <div class="leader-location">📍 Rtc. Kawempe</div>
+                        <div class="leader-bio">Assisting in amplifying our organization's message and community engagement.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                  <div class="leader-image">
+                        <img src="SubiraMobili.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Muwanga Subira</div>
+                        <div class="leader-position">Mobilization Chair</div>
+                        <div class="leader-phone">📞 0772 865 215</div>
+                        <div class="leader-location">📍 Nsangi</div>
+                        <div class="leader-bio">Coordinating efforts to mobilize resources and engage members effectively.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+              <div class="leader-image">
+                        <img src="JaneViceChairMobili.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Namatovu Jane Mary</div>
+                        <div class="leader-position">Vice Mobilization</div>
+                        <div class="leader-phone">📞 0772 493 899</div>
+                        <div class="leader-location">📍 Kampaa Early Bird</div>
+                        <div class="leader-bio">Supporting mobilization initiatives to strengthen member participation.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                       <div class="leader-image">
+                        <img src="AyikoruViceChairMem.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Ayikoru Lilian</div>
+                        <div class="leader-position">Vice Membership</div>
+                        <div class="leader-phone">📞 0700 383 628</div>
+                        <div class="leader-location">📍 Masaka</div>
+                        <div class="leader-bio">Assisting in member recruitment and retention initiatives.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                     <div class="leader-image">
+                        <img src="RebeccaChairWel.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Rebecca Harriet</div>
+                        <div class="leader-position">Welfare Chair</div>
+                        <div class="leader-phone">📞 0772 413 381</div>
+                        <div class="leader-location">📍 Nansana</div>
+                        <div class="leader-bio">Ensuring the well-being and support of club members and their families.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                 <div class="leader-image">
+                        <img src="ArikirizaViceChairWel.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Aikiriize Agetie</div>
+                        <div class="leader-position">Vice Welfare</div>
+                        <div class="leader-phone">📞 0772 828 604</div>
+                        <div class="leader-location">📍 Garuga</div>
+                        <div class="leader-bio">Supporting welfare initiatives and member care programs.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                <div class="leader-image">
+                        <img src="KigoyeViceChairProt.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Kigoye Yusuf</div>
+                        <div class="leader-position"> Vice Chair Protocol</div>
+                        <div class="leader-phone">📞 0784 795 138</div>
+                        <div class="leader-location">📍 Nsangi</div>
+                        <div class="leader-bio">Maintaining organizational protocols and event management standards.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                <div class="leader-image">
+                        <img src="OjotiChairProt.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Ojoti Max Mike</div>
+                        <div class="leader-position"> Chair Protocol</div>
+                        <div class="leader-phone">📞 0701 420 730</div>
+                        <div class="leader-location">📍 Sonde</div>
+                        <div class="leader-bio">Assisting in event coordination and organizational standards.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                <div class="leader-image">
+                        <img src="KatimboChairOper.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Katimbo Julio</div>
+                        <div class="leader-position">Operations Chair</div>
+                        <div class="leader-phone">📞 0758 727 710</div>
+                        <div class="leader-location">📍 Nateete Kampala</div>
+                        <div class="leader-bio">Overseeing operational efficiency and smooth club functioning.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                <div class="leader-image">
+                        <img src="IsaacViceChairOpera.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Mwanje Isaac</div>
+                        <div class="leader-position">Vice Operations</div>
+                        <div class="leader-phone">📞 0704 180 095</div>
+                        <div class="leader-location">📍 Nsangi</div>
+                        <div class="leader-bio">Supporting operational initiatives and administrative functions.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                <div class="leader-image">
+                        <img src="NkokaChairGrants.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Nkooka James</div>
+                        <div class="leader-position">Grants Chair</div>
+                        <div class="leader-phone">📞 0776 744 885</div>
+                        <div class="leader-location">📍 Bweyogerere Namboole</div>
+                        <div class="leader-bio">Managing grant opportunities and funding initiatives for club projects.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                <div class="leader-image">
+                        <img src="PeterChairCor.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Rtn. Peter Dhamuzungu</div>
+                        <div class="leader-position">Chair Corporate & Sponsorship</div>
+                        <div class="leader-phone">📞 0773 559 653</div>
+                        <div class="leader-location">📍 Bugiri</div>
+                        <div class="leader-bio">Building corporate partnerships and sponsorship relationships for growth.</div>
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div class="leadership-grid type-grid" data-type="PAST">
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="Scholar-Bridget.png" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Maria Nansubuga</div>
+                        <div class="leader-position">President 2024-25</div>
+                        <div class="leader-bio">Led the club through a year of growth and expanded community impact.</div>
+                    </div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="isaac.jpg" alt="" loading="lazy">
+                    </div>
+                    <div class="leader-content">
+                        <div class="leader-name">Robert Kigozi</div>
+                        <div class="leader-position">President 2023-24</div>
+                        <div class="leader-bio">Focused on membership development and strengthening club operations.</div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </section>
+
+    <!-- History Timeline -->
+    <section class="timeline-section">
+        <div class="container">
+            <div class="timeline-header">
+                <h2 class="section-title">Our History</h2>
+                <p class="text-lg">Major milestones in Rotary Fellowship of Camping's journey</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2020</div>
+                        <h3 class="timeline-title">1st camping Edition</h3>
+                        <p>Ssezibwa Falls</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2021</div>
+                        <h3 class="timeline-title">2nd camping Edition</h3>
+                        <p>Oguzulu</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2022</div>
+                        <h3 class="timeline-title">3rd camping Edition</h3>
+                        <p>Nile Nest Resort</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023</div>
+                        <h3 class="timeline-title">4th camping Edition</h3>
+                        <p>kabalega Resort Hotel-Masindi</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2024</div>
+                        <h3 class="timeline-title">5th camping Edition</h3>
+                        <p>Tuzza Hotel Busenyi</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2025</div>
+                        <h3 class="timeline-title">6th camping Edition</h3>
+                        <p>Kalangala Sese</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join CTA Section -->
+    <section class="join-cta-section">
+        <div class="container">
+            <div class="join-cta-content">
+                <h2>Ready to Join Our Community?</h2>
+                <p>Become part of a global network of young leaders creating positive change in their communities.</p>
+                <div class="join-cta-buttons">
+                    <a href="contact-us.html" class="button button-primary">
+                        Join Our Club
+                    </a>
+                    <a href="contact-us.html" class="button button-outline">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">Rotary Fellowship of Camping</a>
+                <p class="footer-about">
+                    Rotary Fellowship of Camping is a group of friends, Rotarians and family that share a common passion of Camping and fun. It is built on a promise of making new friends, bonding and network through fun around the world but most importantly explore a hobby of Camping while serving the communities around the world.
+                </p>
+
+                <div class="footer-social">
+                    <a href="https://www.tiktok.com/@rotary.camping.ug?_t=ZM-90xGYxHomuS&_r=1" class="social-link" aria-label="tiktok" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.instagram.com/rotary_camping_ug?igsh=MXNtMnFkempmbWRsNQ%3D%3D&utm_source=qr" class="social-link" aria-label="instagram" target="_blank" rel="noopener">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/rotarycamps?t=OSZ0Hr019cbHH3SxdEqxLQ&s=09" class="social-link" aria-label="x" target="_blank" rel="noopener">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3 class="links-title">Quick Links</h3>
+                <div class="links-grid">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="about.html" class="footer-link active">About Us</a>
+                    <a href="projects.html" class="footer-link">Projects</a>
+                    <a href="messages.html" class="footer-link">Messages</a>
+                    <a href="blogs.html" class="footer-link">Blogs</a>
+                    <a href="contact-us.html" class="footer-link">Get Involved</a>
+                    <a href="contact-us.html" class="footer-link">Contact Us</a>
+                    <a href="donate.html" class="footer-link">Donate Now</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2025 Rotary Fellowship of Camping. All Rights Reserved.</p>
+                <p class="designer">❤️Designed by <a href="https://grecotechgraphix.com/" target="_blank" rel="noopener">Grecotech&graphix</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Page Loader - Show loader on page load and hide when all resources are loaded
+            const pageLoader = document.getElementById('pageLoader');
+            
+            function hideLoader() {
+                if (pageLoader) {
+                    pageLoader.classList.add('hidden');
+                    setTimeout(() => {
+                        pageLoader.style.display = 'none';
+                    }, 500);
+                }
+            }
+
+            // Hide loader when all images and resources are loaded
+            window.addEventListener('load', hideLoader);
+            
+            // Also hide loader after 2 seconds as a fallback
+            setTimeout(hideLoader, 2000);
+
+            // Mobile menu toggle
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+
+            mobileMenuToggle.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                mainNav.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+
+            // Leadership tabs
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const type = this.dataset.type;
+                    
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    document.querySelectorAll('.type-grid').forEach(grid => {
+                        grid.classList.remove('active');
+                    });
+                    document.querySelector(`.type-grid[data-type="${type}"]`).classList.add('active');
+                });
+            });
+
+            // Scroll down button
+            const scrollDown = document.querySelector('.mtb-scroll-down');
+            if (scrollDown) {
+                scrollDown.addEventListener('click', function() {
+                    const startSection = document.querySelector('.smooth-scroll-to-start-section');
+                    if (startSection) {
+                        window.scrollTo({
+                            top: startSection.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Parallax effect
+            const bgImage = document.querySelector('.mini-top-banner img.banner-bg');
+            function updateParallax() {
+                const scrollY = window.scrollY;
+                if (bgImage) {
+                    const offset = scrollY * 0.5;
+                    bgImage.style.transform = `translateY(${offset}px)`;
+                }
+            }
+            window.addEventListener('scroll', updateParallax);
+
+            // Animate vision & mission cards on scroll
+            const vmCards = document.querySelectorAll('.vm-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            vmCards.forEach(card => {
+                observer.observe(card);
+            });
+
+            // Animate timeline items on scroll
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            timelineItems.forEach(item => {
+                timelineObserver.observe(item);
+            });
+
+            // Value items hover effect
+            const valueItems = document.querySelectorAll('.value-item');
+            valueItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.querySelector('.value-icon').style.transform = 'scale(1.2) rotate(10deg)';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.querySelector('.value-icon').style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

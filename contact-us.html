@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Rotary Fellowship of Camping</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4f8c;
+            --primary-dark: #0d3a6b;
+            --primary-light: #2d6bb5;
+            --secondary: #e31b23;
+            --accent: #f9a825;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --medium-gray: #6c757d;
+            --dark-gray: #343a40;
+            --black: #212529;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
+            --shadow-primary: 0 4px 12px rgba(26, 79, 140, 0.3);
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 20px;
+            --radius-round: 50%;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --font-primary: 'Open Sans', sans-serif;
+            --h1: 2.5rem;
+            --h2: 2rem;
+            --h3: 1.75rem;
+            --h4: 1.5rem;
+            --h5: 1.25rem;
+            --h6: 1rem;
+            --base-font-size: 1rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            font-size: var(--base-font-size);
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            z-index: 10000;
+            transition: all var(--transition-medium);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-sm) 0;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: all var(--transition-medium);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            width: 50px;
+            height: 50px;
+            position: relative;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0;
+            transition: all var(--transition-medium);
+        }
+
+        .mobile-menu-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .mobile-menu-toggle .bar {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: var(--primary);
+            margin: 6px auto;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-radius: 2px;
+            position: relative;
+            left: 0;
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background-color: var(--secondary);
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background-color: var(--secondary);
+        }
+
+        .mobile-menu-toggle.active {
+            transform: rotate(90deg);
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin-right: var(--space-md);
+        }
+
+        .nav-list li {
+            position: relative;
+            margin-left: var(--space-md);
+        }
+
+        .nav-list a {
+            color: var(--dark-gray);
+            font-weight: 500;
+            padding: var(--space-xs) 0;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .nav-list a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width var(--transition-medium);
+        }
+
+        .nav-list a:hover:after,
+        .nav-list a.active:after {
+            width: 100%;
+        }
+
+        .nav-list a.active {
+            color: var(--primary);
+        }
+
+        .nav-cta .button {
+            padding: var(--space-xs) var(--space-md);
+            background-color: var(--secondary);
+            color: var(--white);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-medium);
+        }
+
+        .nav-cta .button:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1000px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .main-nav {
+                position: fixed;
+                display: none;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transform: translateX(100%);
+                transition: transform var(--transition-medium);
+                z-index: 1000;
+                padding: var(--space-xl);
+            }
+
+            .main-nav.active {
+                display: flex;
+                transform: translateX(0);
+            }
+
+            .nav-list {
+                flex-direction: column;
+                margin-right: 0;
+                margin-bottom: var(--space-lg);
+                text-align: center;
+            }
+
+            .nav-list li {
+                margin: var(--space-sm) 0;
+            }
+
+            .nav-list a {
+                font-size: var(--h5);
+            }
+        }
+
+        /* Page Loader */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid var(--white);
+            border-right: 4px solid var(--white);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader-text {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .loader-text span {
+            animation: fadeInOut 1.5s ease-in-out infinite;
+        }
+
+        .loader-text span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loader-text span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Hero Banner */
+        .mini-top-banner {
+            margin-top: 80px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .mini-top-banner img.banner-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            opacity: 100%;
+            transition: transform 0.05s ease-out;
+        }
+
+        .mini-top-banner .mtb-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 74, 135, 0.4), rgba(0, 74, 135, 0.6));
+            z-index: 2;
+            pointer-events: none;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mtb-hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+            z-index: 3;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s var(--transition-slow) forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .mtb-hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+            color: var(--primary-dark);
+        }
+
+        .mtb-hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 0;
+            opacity: 0.9;
+        }
+
+        .mtb-scroll-down {
+            cursor: pointer;
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: white;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .mtb-hero-content h1 {
+                font-size: 2.75rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mtb-hero-content h1 {
+                font-size: 2.25rem;
+            }
+            .mtb-hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .mini-top-banner {
+                height: 400px;
+            }
+            .mtb-hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: var(--space-xl) 0;
+        }
+
+        .section-title {
+            font-size: var(--h2);
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+
+        .text-lg {
+            font-size: var(--h5);
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            color: var(--medium-gray);
+        }
+
+        /* Contact Grid */
+        .contact-section {
+            padding: 6rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: var(--off-white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-medium);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-extra-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--primary);
+            transition: all var(--transition-medium);
+        }
+
+        .contact-card:hover .contact-icon {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .contact-card h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-medium);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-link:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        /* Social Media Section */
+        .social-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
+            justify-content: center;
+        }
+
+        .social-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all var(--transition-medium);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            transition: all var(--transition-medium);
+        }
+
+        .social-card:hover .social-icon {
+            transform: scale(1.2);
+        }
+
+        .social-card h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: capitalize;
+        }
+
+        .social-stats {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, white, #f8f9fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .social-handle {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .media-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--white);
+            color: var(--secondary);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-medium);
+        }
+
+        .media-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Contact Form Section */
+        .form-section {
+            padding: 6rem 0;
+        }
+
+        .form-container {
+            background: var(--off-white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .google-form-container {
+            background: var(--white);
+            padding: 0;
+        }
+
+        .google-form-container iframe {
+            border-radius: var(--radius-xl);
+            max-width: 100%;
+        }
+
+        .form-header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .form-header h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .form-header p {
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .contact-form {
+            padding: 2.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-family: var(--font-primary);
+            transition: all var(--transition-fast);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 79, 140, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-medium);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all var(--transition-medium);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .social-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .contact-grid,
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-section,
+            .social-section,
+            .form-section {
+                padding: 4rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            opacity: 0.7;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            animation: scrollPattern 100s linear infinite;
+        }
+
+        @keyframes scrollPattern {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-50%);
+            }
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-brand {
+            text-align: center;
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+            display: inline-block;
+            text-decoration: none;
+            transition: all var(--transition-medium);
+        }
+
+        .footer-logo:hover {
+            color: var(--accent) !important;
+            transform: translateY(-3px);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-about {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all var(--transition-medium);
+        }
+
+        .social-link:hover {
+            background: var(--off-white);
+            color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-primary);
+            text-decoration: none;
+        }
+
+        .footer-links {
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .links-title {
+            color: white !important;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all var(--transition-fast);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width var(--transition-medium);
+        }
+
+        .footer-link:hover {
+            color: var(--accent) !important;
+            opacity: 0.9;
+            text-decoration: none;
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
+            background: var(--accent) !important;
+        }
+
+        .footer-link.active {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .footer-link.active::after {
+            background: var(--accent);
+            width: 100%;
+        }
+
+        .footer-bottom {
+            text-align: center;
+        }
+
+        .copyright {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        .designer {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 0;
+        }
+
+        .designer a {
+            color: white;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .designer a:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                padding: 4rem 0;
+            }
+            .footer-about {
+                font-size: 1rem;
+            }
+            .links-grid {
+                gap: 1rem 2rem;
+            }
+            .footer-link {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-logo {
+                font-size: 2rem;
+            }
+            .footer-social {
+                gap: 1rem;
+            }
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            .links-grid {
+                gap: 1rem;
+            }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: -50px;
+            right: var(--space-lg);
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-round);
+            cursor: pointer;
+            z-index: 99;
+            transition: all var(--transition-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-to-top.show {
+            bottom: var(--space-lg);
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <div class="loader-text">
+                <span>L</span><span>o</span><span>a</span><span>d</span><span>i</span><span>n</span><span>g</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html" aria-label="Rotary Fellowship of Camping">
+                        <img src="logo.png" alt="Rotary Fellowship of Camping Logo">
+                    </a>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="messages.html">Messages</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                        <li><a href="contact-us.html" class="active">Contact Us</a></li>
+                    </ul>
+
+                    <div class="nav-cta">
+                        <a href="donate.html" class="button">Donate Now</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="mini-top-banner">
+        <img class="banner-bg" src="ban.jpg" alt="Banner Background">
+        <div class="mtb-hero-content">
+            <h1>Connect With Us</h1>
+            <p>Reach out to Rotary Fellowship of Camping through any of our channels. We'd love to hear from you!</p>
+        </div>
+        <div class="mtb-overlay"></div>
+        <div class="mtb-scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Contact Methods Section -->
+    <section class="contact-section smooth-scroll-to-start-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How Can We Help?</h2>
+                <p class="text-lg">Choose your preferred method of contact and we'll get back to you as soon as possible</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Visit Us</h3>
+                    <div class="contact-info">
+                        <p>Rotary Fellowship of Camping Club</p>
+                        <p>Nsangi Town Council</p>
+                        <p>Uganda</p>
+                    </div>
+                    <a href="#" class="contact-link">Get Directions</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <div class="contact-info">
+                        <p>General Inquiries</p>
+                        <p>+256772978484</p>
+                        <p>Chair Fellowship of Camping</p>
+                        <p>Mon-Fri, 9AM-5PM</p>
+                    </div>
+                    <a href="tel:+256772978484" class="contact-link">Call Now</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <div class="contact-info">
+                        <p>General Inquiries</p>
+                        <p>ireneluweesi@gmail.com </p>
+                        <p>rotarycampingug@gmail.com </p>
+                        <p>Response within 24hrs</p>
+                    </div>
+                    <a href="mailto:rotarycampingug@gmail.com" class="contact-link">Send Email</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 style="color: white;">Join Our Community</h2>
+                <p style="color: rgba(255,255,255,0.8);">Connect with us on social media for the latest updates and news</p>
+            </div>
+            <div class="social-grid">
+                <div class="social-card">
+                    <div class="social-icon">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </div>
+                    <h3>tiktok</h3>
+                    <div class="social-stats">Follow Us</div>
+                    <p class="social-handle">@rotary.camping.ug</p>
+                    <a href="https://www.tiktok.com/@rotary.camping.ug?_t=ZM-90xGYxHomuS&_r=1" target="_blank" class="media-link">Follow Us</a>
+                </div>
+                <div class="social-card">
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>instagram</h3>
+                    <div class="social-stats">Follow Us</div>
+                    <p class="social-handle">@rotary_camping_ug</p>
+                    <a href="https://www.instagram.com/rotary_camping_ug?igsh=MXNtMnFkempmbWRsNQ%3D%3D&utm_source=qr" target="_blank" class="media-link">Follow Us</a>
+                </div>
+                <div class="social-card">
+                    <div class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <h3>x (twitter)</h3>
+                    <div class="social-stats">Follow Us</div>
+                    <p class="social-handle">@rotarycamps</p>
+                    <a href="https://x.com/rotarycamps?t=OSZ0Hr019cbHH3SxdEqxLQ&s=09" target="_blank" class="media-link">Follow Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Send Us a Message</h2>
+                <p class="text-lg">Have questions or suggestions? Fill out the form below and we'll get back to you</p>
+            </div>
+            <div class="form-container google-form-container">
+                <div style="display: flex; justify-content: center; margin: 2rem 0;">
+                    <a href="https://forms.gle/5KZQ5fCKPqWGvnfE8" target="_blank" class="button button-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">
+                        <i class="fas fa-external-link-alt"></i> Open Feedback Form
+                    </a>
+                </div>
+                <p style="text-align: center; color: var(--medium-gray); margin-bottom: 2rem;">Click the button above to open our feedback form in a new window</p>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">Rotary Fellowship of Camping</a>
+                <p class="footer-about">
+                    Rotary Fellowship of Camping is a group of friends, Rotarians and family that share a common passion of Camping and fun. It is built on a promise of making new friends, bonding and network through fun around the world but most importantly explore a hobby of Camping while serving the communities around the world.
+                </p>
+
+                <div class="footer-social">
+                    <a href="https://www.tiktok.com/@rotary.camping.ug?_t=ZM-90xGYxHomuS&_r=1" class="social-link" aria-label="tiktok" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.instagram.com/rotary_camping_ug?igsh=MXNtMnFkempmbWRsNQ%3D%3D&utm_source=qr" class="social-link" aria-label="instagram" target="_blank" rel="noopener">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/rotarycamps?t=OSZ0Hr019cbHH3SxdEqxLQ&s=09" class="social-link" aria-label="x" target="_blank" rel="noopener">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3 class="links-title">Quick Links</h3>
+                <div class="links-grid">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="projects.html" class="footer-link">Projects</a>
+                    <a href="messages.html" class="footer-link">Messages</a>
+                    <a href="blogs.html" class="footer-link">Blogs</a>
+                    <a href="contact-us.html" class="footer-link">Get Involved</a>
+                    <a href="contact-us.html" class="footer-link active">Contact Us</a>
+                    <a href="donate.html" class="footer-link">Donate Now</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2025 Rotary Fellowship of Camping. All Rights Reserved.</p>
+                <p class="designer">❤️Designed by <a href="https://grecotechgraphix.com/" target="_blank" rel="noopener">Grecotech&graphix</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Page Loader - Show loader on page load and hide when all resources are loaded
+            const pageLoader = document.getElementById('pageLoader');
+            
+            function hideLoader() {
+                if (pageLoader) {
+                    pageLoader.classList.add('hidden');
+                    setTimeout(() => {
+                        pageLoader.style.display = 'none';
+                    }, 500);
+                }
+            }
+
+            // Hide loader when all images and resources are loaded
+            window.addEventListener('load', hideLoader);
+            
+            // Also hide loader after 2 seconds as a fallback
+            setTimeout(hideLoader, 2000);
+
+            // Mobile menu toggle
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+
+            mobileMenuToggle.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                mainNav.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+
+            // Scroll down button
+            const scrollDown = document.querySelector('.mtb-scroll-down');
+            if (scrollDown) {
+                scrollDown.addEventListener('click', function() {
+                    const startSection = document.querySelector('.smooth-scroll-to-start-section');
+                    if (startSection) {
+                        window.scrollTo({
+                            top: startSection.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Parallax effect
+            const bgImage = document.querySelector('.mini-top-banner img.banner-bg');
+            function updateParallax() {
+                const scrollY = window.scrollY;
+                if (bgImage) {
+                    const offset = scrollY * 0.5;
+                    bgImage.style.transform = `translateY(${offset}px)`;
+                }
+            }
+            window.addEventListener('scroll', updateParallax);
+
+            // Form submission
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const department = document.getElementById('department').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Simple validation
+                    if (!name || !email || !subject || !message) {
+                        alert('Please fill in all required fields.');
+                        return;
+                    }
+                    
+                    // In a real implementation, you would send this data to a server
+                    console.log('Form submitted:', { name, email, subject, department, message });
+                    
+                    // Show success message
+                    alert('Thank you for your message! We will get back to you soon.');
+                    
+                    // Reset form
+                    contactForm.reset();
+                });
+            }
+
+            // Animate contact cards on scroll
+            const contactCards = document.querySelectorAll('.contact-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            contactCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

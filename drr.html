@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rotary Fellowship of Camping - People of Action creating positive change in our communities">
+    <title>Rotary Fellowship of Camping | Club President Edgar Greco</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4f8c;
+            --primary-dark: #0d3a6b;
+            --primary-light: #2d6bb5;
+            --secondary: #e31b23;
+            --accent: #f9a825;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --medium-gray: #6c757d;
+            --dark-gray: #343a40;
+            --black: #212529;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
+            --shadow-xl: 0 12px 24px rgba(0,0,0,0.2);
+            --shadow-primary: 0 4px 12px rgba(26, 79, 140, 0.3);
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 20px;
+            --radius-round: 50%;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-xxl: 6rem;
+            --font-primary: 'Open Sans', sans-serif;
+            --h1: 2.5rem;
+            --h2: 2rem;
+            --h3: 1.75rem;
+            --h4: 1.5rem;
+            --h5: 1.25rem;
+            --h6: 1rem;
+            --base-font-size: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --heading-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1);
+            --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, #c4161c 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            font-size: var(--base-font-size);
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            z-index: 10000;
+            transition: all var(--transition-medium);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-sm) 0;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: all var(--transition-medium);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            width: 50px;
+            height: 50px;
+            position: relative;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0;
+            transition: all var(--transition-medium);
+        }
+
+        .mobile-menu-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .mobile-menu-toggle .bar {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: var(--primary);
+            margin: 6px auto;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-radius: 2px;
+            position: relative;
+            left: 0;
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background-color: var(--secondary);
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .mobile-menu-toggle.active .bar:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background-color: var(--secondary);
+        }
+
+        .mobile-menu-toggle.active {
+            transform: rotate(90deg);
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin-right: var(--space-md);
+        }
+
+        .nav-list li {
+            position: relative;
+            margin-left: var(--space-md);
+        }
+
+        .nav-list a {
+            color: var(--dark-gray);
+            font-weight: 500;
+            padding: var(--space-xs) 0;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .nav-list a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width var(--transition-medium);
+        }
+
+        .nav-list a:hover:after,
+        .nav-list a.active:after {
+            width: 100%;
+        }
+
+        .nav-list a.active {
+            color: var(--primary);
+        }
+
+        .nav-cta .button {
+            padding: var(--space-xs) var(--space-md);
+            background-color: var(--secondary);
+            color: var(--white);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-medium);
+        }
+
+        .nav-cta .button:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1000px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .main-nav {
+                position: fixed;
+                display: none;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transform: translateX(100%);
+                transition: transform var(--transition-medium);
+                z-index: 1000;
+                padding: var(--space-xl);
+            }
+
+            .main-nav.active {
+                display: flex;
+                transform: translateX(0);
+            }
+
+            .nav-list {
+                flex-direction: column;
+                margin-right: 0;
+                margin-bottom: var(--space-lg);
+                text-align: center;
+            }
+
+            .nav-list li {
+                margin: var(--space-sm) 0;
+            }
+
+            .nav-list a {
+                font-size: var(--h5);
+            }
+        }
+
+        /* Page Loader */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid var(--white);
+            border-right: 4px solid var(--white);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader-text {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .loader-text span {
+            animation: fadeInOut 1.5s ease-in-out infinite;
+        }
+
+        .loader-text span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loader-text span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* President Hero Section */
+        .president-hero {
+            background: linear-gradient(135deg, var(--primary-extra-light), var(--off-white));
+            padding: var(--space-xxl) 0;
+            margin-top: 80px;
+        }
+
+        .president-hero .container {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xl);
+            flex-wrap: wrap;
+        }
+
+        .president-portrait {
+            flex: 0 0 300px;
+            position: relative;
+        }
+
+        .portrait-frame {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .portrait-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            transition: transform var(--transition-medium);
+        }
+
+        .portrait-frame:hover .portrait-image {
+            transform: scale(1.05);
+        }
+
+        .portrait-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 100%);
+            pointer-events: none;
+        }
+
+        .president-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .president-info h1 {
+            font-size: var(--h1);
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+            text-shadow: var(--heading-shadow);
+        }
+
+        .president-info h2 {
+            font-size: var(--h4);
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: var(--space-md);
+        }
+
+        .president-info p {
+            font-size: var(--text-lg);
+            color: var(--dark-gray);
+            margin-bottom: var(--space-lg);
+            line-height: 1.7;
+        }
+
+        .president-social {
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: all var(--transition-medium);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        @media (max-width: 768px) {
+            .president-hero .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .president-portrait {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .portrait-image {
+                height: 350px;
+            }
+            
+            .president-info {
+                min-width: auto;
+            }
+        }
+
+        /* Memoir Section */
+        .memoir-section {
+            background: var(--white);
+            padding: var(--space-xxl) 0;
+            line-height: 1.9;
+        }
+
+        .memoir-section .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .memoir-section h3 {
+            font-size: var(--h3);
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+            position: relative;
+            padding-left: var(--space-md);
+        }
+
+        .memoir-section h3:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 30px;
+            background: var(--secondary);
+            border-radius: var(--radius-sm);
+        }
+
+        .memoir-section p {
+            margin-bottom: var(--space-md);
+            font-size: var(--text-lg);
+        }
+
+        .memoir-section blockquote {
+            font-size: var(--text-xl);
+            font-style: italic;
+            color: var(--secondary);
+            border-left: 4px solid var(--primary);
+            padding-left: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .memoir-section figure {
+            margin: var(--space-xl) 0;
+        }
+
+        .memoir-section figure:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .memoir-section figure img {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            transition: transform var(--transition-medium);
+        }
+
+        .memoir-section figure:hover img {
+            transform: scale(1.02);
+        }
+
+        .memoir-section figure figcaption {
+            text-align: center;
+            color: var(--medium-gray);
+            margin-top: var(--space-xs);
+            font-style: italic;
+        }
+
+        /* Quote Banner */
+        .quote-banner {
+            background: var(--gradient-secondary);
+            color: var(--white);
+            padding: var(--space-xl);
+            font-size: var(--text-xl);
+            text-align: center;
+            font-style: italic;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-banner:before {
+            content: '"';
+            position: absolute;
+            top: -30px;
+            left: 50px;
+            font-size: 10rem;
+            opacity: 0.1;
+            color: var(--white);
+            font-family: serif;
+        }
+
+        .quote-banner:after {
+            content: '"';
+            position: absolute;
+            bottom: -60px;
+            right: 50px;
+            font-size: 10rem;
+            opacity: 0.1;
+            color: var(--white);
+            font-family: serif;
+        }
+
+        /* Vision Section */
+        .vision-section {
+            background: var(--off-white);
+            padding: var(--space-xxl) 0;
+        }
+
+        .vision-section .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .vision-section h2 {
+            font-size: var(--h2);
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            position: relative;
+        }
+
+        .vision-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+
+        .vision-card {
+            background: var(--white);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: all var(--transition-medium);
+            border-top: 4px solid var(--primary);
+        }
+
+        .vision-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .vision-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-light);
+            border-radius: var(--radius-round);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-md);
+            color: var(--white);
+            font-size: 1.8rem;
+        }
+
+        .vision-card h3 {
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+            font-size: var(--h4);
+        }
+
+        .vision-card p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .memoir-section {
+                padding: var(--space-xl) var(--space-md);
+            }
+            
+            .vision-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            opacity: 0.7;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            animation: scrollPattern 100s linear infinite;
+        }
+
+        @keyframes scrollPattern {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-50%);
+            }
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-brand {
+            text-align: center;
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+            display: inline-block;
+            text-decoration: none;
+            transition: all var(--transition-medium);
+        }
+
+        .footer-logo:hover {
+            color: var(--accent) !important;
+            transform: translateY(-3px);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-about {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .footer-links {
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .links-title {
+            color: white !important;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all var(--transition-fast);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width var(--transition-medium);
+        }
+
+        .footer-link:hover {
+            color: var(--accent) !important;
+            opacity: 0.9;
+            text-decoration: none;
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
+            background: var(--accent) !important;
+        }
+
+        .footer-link.active {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .footer-link.active::after {
+            background: var(--accent);
+            width: 100%;
+        }
+
+        .footer-bottom {
+            text-align: center;
+        }
+
+        .copyright {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        .designer {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                padding: 4rem 0;
+            }
+            .footer-about {
+                font-size: 1rem;
+            }
+            .links-grid {
+                gap: 1rem 2rem;
+            }
+            .footer-link {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-logo {
+                font-size: 2rem;
+            }
+            .footer-social {
+                gap: 1rem;
+            }
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            .links-grid {
+                gap: 1rem;
+            }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: -50px;
+            right: var(--space-lg);
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-round);
+            cursor: pointer;
+            z-index: 99;
+            transition: all var(--transition-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-to-top.show {
+            bottom: var(--space-lg);
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <div class="loader-text">
+                <span>L</span><span>o</span><span>a</span><span>d</span><span>i</span><span>n</span><span>g</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html" aria-label="Rotary Fellowship of Camping">
+                        <img src="logo.png" alt="Rotary Fellowship of Camping Logo">
+                    </a>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="messages.html">Messages</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                        <li><a href="drr.html" class="active">Our President</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+
+                    <div class="nav-cta">
+                        <a href="donate.html" class="button">Donate Now</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- President Hero Section -->
+    <section class="president-hero">
+        <div class="container">
+            <div class="president-portrait">
+                <div class="portrait-frame">
+                    <img src="IMG_9825.jpg" alt="Portrait of Club President Edgar Greco" class="portrait-image">
+                    <div class="portrait-overlay"></div>
+                </div>
+            </div>
+            <div class="president-info">
+                <h1>Rtn. Irene Nakanwagi </h1>
+                <h2>Executive Director, Rotary Fellowship of Camping 2025-26</h2>
+                <p>Rtn. Irene's leadership is rooted in bold ideas and community-first innovation. Her journey in Rotary demonstrates the power of service, mentorship, and dedication to creating lasting impact in our community.</p>
+                <div class="president-social">
+                    <a href="#" class="social-link" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memoir Section -->
+    <section class="memoir-section">
+        <div class="container">
+            <h3>Membership</h3>
+            <p> Membership RFC is open to any interested individual participant and offered an annual membership fee of $30. We inducted over 150 Members who have fully subscribed their annual dues andcontinue to encourage others to join us because this will help us in doing much for our communities. However, lifetime membership may be offered at the discretion of the Rotary Fellowship’s Board of Directors.
+            <!--<p>Rotary gave me the platform to test ideas, lead change, and build movements that address real community needs. From organizing our first literacy program to spearheading environmental initiatives, every project has taught me valuable lessons about collaboration and impact.</p>-->
+            
+            <figure>
+                <img src="lead.jpg" alt="Edgar leading a community project">
+                <figcaption>Annual Camping</figcaption>
+            </figure>
+            
+            <h3>My Chairperson Vision</h3>
+            <p>We are only as strong as our commitment to service and our connections with one another. That's why I'm focusing on three key areas during my Chairpersonship:</p>
+            
+            <blockquote>
+                "True leadership is not about position, but about creating opportunities for others to grow and make a difference."
+            </blockquote>
+            
+            <p>My approach is built on the belief that every member has unique talents to contribute. By fostering an inclusive environment and providing the right support systems, we can achieve remarkable things together.</p>
+            
+            <figure>
+                <img src="yoga.jpg" alt="Edgar mentoring youth">
+                <figcaption>Post-workout perfection and fellowship</figcaption>
+            </figure>
+            
+            <h3>To Every Rotary Camper</h3>
+            <p>You are not alone in this journey of service. Each one of us brings unique perspectives and skills that make our club stronger.</p>
+            <p>Together, we're building a legacy of service that will inspire future generations in Uganda and beyond. Your passion, your ideas, and your commitment are what make Rotary Fellowship of Camping truly special.</p>
+            
+            <figure>
+                <img src="IMG_0016.jpg" alt="Irene facilitating a club meeting">
+                <figcaption>Facilitating a strategic planning session with club members</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- Quote Banner -->
+    <section class="quote-banner">
+        "Service above self is not just a motto—it's our way of life. Let's build a legacy of impact together."
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision-section">
+        <div class="container">
+            <h2>My Focus Areas</h2>
+            <div class="vision-grid">
+                <div class="vision-card">
+                    <div class="vision-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Community Impact</h3>
+                    <p>Expanding our service projects to address the most pressing needs through sustainable initiatives.</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Member Development</h3>
+                    <p>Creating opportunities for personal and professional growth through leadership training and skill-building workshops.</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Strategic Partnerships</h3>
+                    <p>Building stronger collaborations with local organizations, government, and Rotary clubs to maximize our impact.</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Sustainable Growth</h3>
+                    <p>Developing systems and processes that ensure our club's longevity and continued success for years to come.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">Rotary Fellowship of Camping</a>
+                <p class="footer-about">
+                    Rotary Fellowship of Camping is a group of friends, Rotarians and family that share a common passion of Camping and fun. It is built on a promise of making new friends, bonding and network through fun around the world but most importantly explore a hobby of Camping while serving the communities around the world.
+                </p>
+
+                <div class="footer-social">
+                    <a href="https://www.tiktok.com/@rotary.camping.ug?_t=ZM-90xGYxHomuS&_r=1" class="social-link" aria-label="tiktok" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.instagram.com/rotary_camping_ug?igsh=MXNtMnFkempmbWRsNQ%3D%3D&utm_source=qr" class="social-link" aria-label="instagram" target="_blank" rel="noopener">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/rotarycamps?t=OSZ0Hr019cbHH3SxdEqxLQ&s=09" class="social-link" aria-label="x" target="_blank" rel="noopener">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3 class="links-title">Quick Links</h3>
+                <div class="links-grid">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="projects.html" class="footer-link">Projects</a>
+                    <a href="messages.html" class="footer-link">Messages</a>
+                    <a href="blogs.html" class="footer-link">Blogs</a>
+                    <a href="drr.html" class="footer-link active">Our President</a>
+                    <a href="contact-us.html" class="footer-link">Contact Us</a>
+                    <a href="donate.html" class="footer-link">Donate Now</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2025 Rotary Fellowship of Camping. All Rights Reserved.</p>
+                <p class="designer">❤️Designed by <a href="https://grecotechgraphix.com/" target="_blank" rel="noopener">Grecotech&graphix</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Page Loader - Show loader on page load and hide when all resources are loaded
+            const pageLoader = document.getElementById('pageLoader');
+            
+            function hideLoader() {
+                if (pageLoader) {
+                    pageLoader.classList.add('hidden');
+                    setTimeout(() => {
+                        pageLoader.style.display = 'none';
+                    }, 500);
+                }
+            }
+
+            // Hide loader when all images and resources are loaded
+            window.addEventListener('load', hideLoader);
+            
+            // Also hide loader after 2 seconds as a fallback
+            setTimeout(hideLoader, 2000);
+
+            // Mobile menu toggle
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+
+            mobileMenuToggle.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                mainNav.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Image hover effects
+            const images = document.querySelectorAll('.memoir-section figure img');
+            images.forEach(img => {
+                img.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                });
+                img.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
